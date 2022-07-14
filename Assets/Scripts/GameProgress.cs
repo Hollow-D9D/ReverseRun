@@ -21,10 +21,15 @@ public class GameProgress : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float progress = Player.transform.position.z / endPos * startWidth;
+        float progress = Player.transform.position.z / endPos * startWidth / -100;
         if (showProgress)
-        showProgress.rectTransform.sizeDelta = new Vector2(startWidth - progress , showProgress.rectTransform.sizeDelta.y);
-        showProgress.rectTransform.anchoredPosition = new Vector2(startX + progress / 2 , showProgress.rectTransform.anchoredPosition.y );
+        {
+            showProgress.fillAmount = 1 - progress;
+            Debug.Log(progress);
+        }
+            
+        //showProgress.rectTransform.sizeDelta = new Vector2(startWidth - progress , showProgress.rectTransform.sizeDelta.y);
+        //showProgress.rectTransform.anchoredPosition = new Vector2(startX + progress / 2 , showProgress.rectTransform.anchoredPosition.y );
 
     }
 }
