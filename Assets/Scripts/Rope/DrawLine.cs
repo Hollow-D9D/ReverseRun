@@ -18,13 +18,13 @@ public class DrawLine : MonoBehaviour
 
     void Start()
 	{
-		lineRenderer.positionCount = points.Count;
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
 		int i = 0;
+		lineRenderer.positionCount = points.Count;
 		foreach (Transform node in points)
 		{
 			lineRenderer.SetPosition(i, node.position);
