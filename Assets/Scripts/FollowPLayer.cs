@@ -14,7 +14,7 @@ public class FollowPLayer : MonoBehaviour
    }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         Vector3 newPos = new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z + (rb.velocity.z * Time.deltaTime));
         transform.position = newPos;

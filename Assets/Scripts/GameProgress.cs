@@ -25,7 +25,7 @@ public class GameProgress : MonoBehaviour
         if (showProgress)
         {
             showProgress.fillAmount = 1 - progress;
-            Debug.Log(progress);
+            //Debug.Log(progress);
         }
             
         //showProgress.rectTransform.sizeDelta = new Vector2(startWidth - progress , showProgress.rectTransform.sizeDelta.y);

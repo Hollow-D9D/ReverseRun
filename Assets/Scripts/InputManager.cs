@@ -60,6 +60,10 @@ public class InputManager : MonoBehaviour
         if (OnMove != null) OnMove(primaryPosition());
     }
 
+    public float getTouchX()
+    {
+        return touchControls.Touch.Move.ReadValue<Vector2>().x;
+    }
     public Vector3 primaryPosition()
     {
         return Utils.ScreenToWorld(camera, touchControls.Touch.Move.ReadValue<Vector2>());

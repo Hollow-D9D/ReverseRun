@@ -15,7 +15,7 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(ragDoll.position);
+        //Debug.Log(ragDoll.position);
         //transform.localPosition = new Vector3(ragDoll.transform.position.x - camPosition.localPosition.x, ragDoll.transform.position.y - camPosition.localPosition.y, ragDoll.transform.position.z - camPosition.localPosition.z);
         transform.position = ragDoll.position + offset;
         transform.LookAt(ragDoll);

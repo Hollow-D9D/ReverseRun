@@ -31,7 +31,7 @@ public class RopeMaker : MonoBehaviour
             currentTransform = Instantiate(nodePrefab, currentTransform.position + transformOffset, currentTransform.rotation).transform;
             currentTransform.GetComponent<ConfigurableJoint>().connectedBody = currentRb;
             currentRb = currentTransform.GetComponent<Rigidbody>();
-            Debug.Log(currentTransform.position);
+            //Debug.Log(currentTransform.position);
             lineDrawer.points.Add(currentTransform);
         }
         player.gameObject.AddComponent<FixedJoint>().connectedBody = currentRb;
