@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     private Rigidbody rb;
     private float screenWidth;
+    private Transform playerTransform;
+    [SerializeField] private float borderOffset = 0.5f;
     [SerializeField] private float leftEdge = -18.5f;
     [SerializeField] private float rightEdge = -8.5f;
 
@@ -18,6 +20,7 @@ public class PlayerController : MonoBehaviour
         screenWidth = Screen.width;
         rb = GetComponent<Rigidbody>();
         inputManager = GetComponent<InputManager>();
+        playerTransform = GetComponent<Transform>();
     }
     // Start is called before the first frame update
     void Start()
@@ -56,7 +59,8 @@ public class PlayerController : MonoBehaviour
             //Debug.Log(inputManager.primaryPosition());
 //                        transform.position = newPosition;
             //Debug.Log(inputManager.primaryPosition());
-            rb.AddForce(newPosition / 3, ForceMode.Impulse);
+            if (!((Mathf.Abs(playerTransform.position.x - leftEdge) < borderOffset) || (Mathf.Abs(playerTransform.position.x - rightEdge) < borderOffset)))
+                rb.AddForce(newPosition, ForceMode.VelocityChange);
             yield return null;
         }
     }

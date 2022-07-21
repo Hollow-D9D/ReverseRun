@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 3
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
   m_HaloStrength: 0.5
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: c3a9c210efb815a428b61be9d656eb1d, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 4348a5ffc0977ea4d8e4e5c78dfc7124, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 32b0506833838c346b1f4ba2f7b37b67, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -350,8 +350,8 @@ Transform:
   m_LocalPosition: {x: -13.565623, y: 2.17, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 543450652082608627}
   - {fileID: 4638151704801103025}
+  - {fileID: 543450652082608627}
   - {fileID: 1304964385}
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -412,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93e665b5c4bf501459732b2f0a549feb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  borderOffset: 0.15
   leftEdge: -18.5
   rightEdge: -8.5
 --- !u!1 &448694628
@@ -684,15 +685,15 @@ PrefabInstance:
       objectReference: {fileID: 447863068}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: ropeCount
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: transformOffset.x
-      value: 0.1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: transformOffset.z
-      value: -0.3
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257843, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: m_RootOrder
@@ -738,6 +739,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8859618640021257848, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b89680bfcb298f34abc2d6d96daeedad, type: 2}
     - target: {fileID: 8859618640021257850, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: m_Name
       value: rope_LineRenderer
@@ -4142,15 +4147,15 @@ PrefabInstance:
       objectReference: {fileID: 447863068}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: ropeCount
-      value: 50
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: transformOffset.x
-      value: -0.1
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257842, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: transformOffset.z
-      value: -0.3
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8859618640021257843, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: m_RootOrder
@@ -4196,6 +4201,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8859618640021257848, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: b89680bfcb298f34abc2d6d96daeedad, type: 2}
     - target: {fileID: 8859618640021257850, guid: 1cb81ae033a41d6448858963d5b6c8a9, type: 3}
       propertyPath: m_Name
       value: rope_LineRenderer (1)
@@ -4530,7 +4539,7 @@ Transform:
   - {fileID: 7955192435813599452}
   - {fileID: 572617753563684602}
   m_Father: {fileID: 447863068}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &543450652184875843 stripped
 Transform:
@@ -7352,12 +7361,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 996585675865974730}
-  m_LocalRotation: {x: 0.27059805, y: -0.6532815, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 2.52, y: 3.49, z: 0}
+  m_LocalRotation: {x: 0.27059805, y: -0.65328157, z: 0.27059805, w: 0.6532815}
+  m_LocalPosition: {x: 2.5200005, y: 3.4899998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 447863068}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 45, y: -90, z: 0}
 --- !u!4 &4738925020356100380
 Transform:

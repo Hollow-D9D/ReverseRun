@@ -63,8 +63,8 @@ ConfigurableJoint:
   m_ConnectedAnchor: {x: 0, y: 0, z: -2.7400208}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
-  m_XMotion: 2
-  m_YMotion: 2
+  m_XMotion: 1
+  m_YMotion: 0
   m_ZMotion: 2
   m_AngularXMotion: 2
   m_AngularYMotion: 2
@@ -77,7 +77,7 @@ ConfigurableJoint:
     bounciness: 0
     contactDistance: 0
   m_AngularXLimitSpring:
-    spring: 0
+    spring: 1.87
     damper: 0
   m_LowAngularXLimit:
     limit: 0
@@ -102,18 +102,18 @@ ConfigurableJoint:
   m_TargetVelocity: {x: 0, y: 0, z: 0}
   m_XDrive:
     serializedVersion: 3
-    positionSpring: 50
-    positionDamper: 10
+    positionSpring: 10
+    positionDamper: 30
     maximumForce: 3.4028233e+38
   m_YDrive:
     serializedVersion: 3
-    positionSpring: 50
-    positionDamper: 10
+    positionSpring: 10
+    positionDamper: 30
     maximumForce: 3.4028233e+38
   m_ZDrive:
     serializedVersion: 3
-    positionSpring: 50
-    positionDamper: 10
+    positionSpring: 1
+    positionDamper: 0
     maximumForce: 3.4028233e+38
   m_TargetRotation: {x: 0, y: 0, z: 0, w: 1}
   m_TargetAngularVelocity: {x: 0, y: 0, z: 0}
