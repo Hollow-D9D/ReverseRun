@@ -21,7 +21,7 @@ public class ThrowPlayer : MonoBehaviour
     private CameraSwitchPosition cameraMove;
     private ForwardMovement fm;
     private RagdollSwitch rgSwitch;
-    // Start is called before the first frame update
+
     void Awake()
     {
         rgSwitch = GetComponent<RagdollSwitch>();
@@ -41,7 +41,7 @@ public class ThrowPlayer : MonoBehaviour
             rb.AddForce(Vector3.up * progress * upForce, ForceMode.Impulse);
           //  rbLeftArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
            // rbRightArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
-            cameraMove.CameraFromRight();
+           // cameraMove.CameraFromRight();
         }
     }
 
@@ -66,7 +66,7 @@ public class ThrowPlayer : MonoBehaviour
         rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
         Time.timeScale = 0.8f;
         //cameraMove.CameraUpfront();
-        cameraMove.CameraUpfront();
+        //cameraMove.CameraUpfront();
         Destroy(GetComponent<PlayerController>());
         Destroy(this);
         
@@ -74,11 +74,5 @@ public class ThrowPlayer : MonoBehaviour
             //new Vector3(transform.position.x + cam.transform.position.x, transform.position.y + cam.transform.position.y, transform.position.z + cam.transform.position.z);
         //cam.transform.parent = null;
         //cam.transform.position = globalPos;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
