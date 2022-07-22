@@ -14,19 +14,15 @@ public class CameraSwitchPosition : MonoBehaviour
         Vector3 refPos;
         Vector3 refRot;
 
-        void Update()
-        {
-        }
-
         public void CameraFromRight()
         {
-            transform.DOLocalMove(target1.localPosition, 1f);
+           transform.DOLocalMove(target1.localPosition, 1f);
             transform.DORotate(target1.eulerAngles, 1f);
         }
 
         public void CameraUpfront()
         {
-//            Vector3 desiredPos = targ
+            //Vector3 desiredPos = targ
             transform.DOLocalMove(new Vector3(transform.localPosition.x + 4, transform.localPosition.y - 3, transform.localPosition.z), 1.5f);
             //transform.DORotate(target2.eulerAngles, 0.5f).SetEase(Ease.InBounce);
         }

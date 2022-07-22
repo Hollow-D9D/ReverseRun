@@ -14,18 +14,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float leftEdge = -18.5f;
     [SerializeField] private float rightEdge = -8.5f;
 
-
     private void Awake()
     {
         screenWidth = Screen.width;
         rb = GetComponent<Rigidbody>();
         inputManager = GetComponent<InputManager>();
         playerTransform = GetComponent<Transform>();
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     private void OnEnable()
@@ -55,22 +49,13 @@ public class PlayerController : MonoBehaviour
         {
             //newPosition = new Vector3(Mathf.Clamp(inputManager.primaryPosition().x, leftEdge, rightEdge), transform.position.y, transform.position.z);
             newPosition = new Vector3(getDirRange(), 0, 0);
-            Debug.Log(getDirRange());
+            //Debug.Log(getDirRange());
             //Debug.Log(inputManager.primaryPosition());
-//                        transform.position = newPosition;
+            //transform.position = newPosition;
             //Debug.Log(inputManager.primaryPosition());
             if (!((Mathf.Abs(playerTransform.position.x - leftEdge) < borderOffset) || (Mathf.Abs(playerTransform.position.x - rightEdge) < borderOffset)))
                 rb.AddForce(newPosition, ForceMode.VelocityChange);
             yield return null;
         }
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
-
 }
