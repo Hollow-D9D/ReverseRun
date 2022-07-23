@@ -39,7 +39,11 @@ public class PlayerController : MonoBehaviour
 
     float getDirRange()
     {
-        return Mathf.Clamp((inputManager.getTouchX() * 2 / screenWidth - 1), -1, 1);
+        //return Mathf.Clamp((inputManager.getTouchX() * 2 / screenWidth - 1), -1, 1);
+        //return (inputManager.primaryPosition() - transform.position).normalized.x;
+        //return Mathf.Clamp((inputManager.getTouchX() * 2 / screenWidth - 1), -1, 1) - ((transform.position.x - leftEdge) / (rightEdge - leftEdge) * 2 - 1) - 1;
+        //return Mathf.Clamp((inputManager.getTouchX() * 2 / screenWidth - 1) - ((leftEdge + transform.position.x) / (rightEdge - leftEdge) * 2 - 1), -1, 1);
+        return Mathf.Clamp((inputManager.getTouchX() / screenWidth) * (rightEdge - leftEdge) + leftEdge,leftEdge, rightEdge);
     }
 
     private IEnumerator movementRoutine()
@@ -48,13 +52,14 @@ public class PlayerController : MonoBehaviour
         while(true)
         {
             //newPosition = new Vector3(Mathf.Clamp(inputManager.primaryPosition().x, leftEdge, rightEdge), transform.position.y, transform.position.z);
-            newPosition = new Vector3(getDirRange(), 0, 0);
-            //Debug.Log(getDirRange());
+            newPosition = new Vector3(getDirRange(), transform.position.y, transform.position.z);
+            Debug.Log(newPosition.x);
+            rb.MovePosition(newPosition);
             //Debug.Log(inputManager.primaryPosition());
             //transform.position = newPosition;
             //Debug.Log(inputManager.primaryPosition());
-            if (!((Mathf.Abs(playerTransform.position.x - leftEdge) < borderOffset) || (Mathf.Abs(playerTransform.position.x - rightEdge) < borderOffset)))
-                rb.AddForce(newPosition, ForceMode.VelocityChange);
+           // if (!((Mathf.Abs(playerTransform.position.x - leftEdge) < borderOffset) || (Mathf.Abs(playerTransform.position.x - rightEdge) < borderOffset)))
+               // rb.AddForce(newPosition, ForceMode.VelocityChange);
             yield return null;
         }
     }

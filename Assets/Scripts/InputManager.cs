@@ -52,7 +52,7 @@ public class InputManager : MonoBehaviour
         fm.enabled = true;
 
         Destroy(image);
-        granny.transform.eulerAngles = new Vector3(0, 185, 0);
+        granny.transform.eulerAngles = new Vector3(0, 180, 0);
         rb.constraints = RigidbodyConstraints.None;
         rb.freezeRotation = true;
         anim.SetBool("isStarted", true);
