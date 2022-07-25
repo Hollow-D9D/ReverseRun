@@ -55,6 +55,7 @@ public class InputManager : MonoBehaviour
         granny.transform.eulerAngles = new Vector3(0, 180, 0);
         rb.constraints = RigidbodyConstraints.None;
         rb.freezeRotation = true;
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         anim.SetBool("isStarted", true);
         //Debug.Log("GAME START"); 
         if (OnMove != null) OnMove(primaryPosition());

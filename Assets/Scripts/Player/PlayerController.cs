@@ -31,9 +31,9 @@ public class PlayerController : MonoBehaviour
     {
         //Debug.Log(pos);
         //rb.AddForce(Vector3.left * pos, ForceMode.Impulse);
-        Vector3 newPosition = transform.position;
-        newPosition.x = pos.x;
-        transform.position = newPosition;
+        //Vector3 newPosition = transform.position;
+        //newPosition.x = pos.x;
+        //transform.position = newPosition;
         StartCoroutine(movementRoutine());
     }
 
@@ -53,12 +53,13 @@ public class PlayerController : MonoBehaviour
         {
             //newPosition = new Vector3(Mathf.Clamp(inputManager.primaryPosition().x, leftEdge, rightEdge), transform.position.y, transform.position.z);
             newPosition = new Vector3(getDirRange(), transform.position.y, transform.position.z);
-            Debug.Log(newPosition.x);
-            rb.MovePosition(newPosition);
+            //Debug.Log(newPosition.x);
             //Debug.Log(inputManager.primaryPosition());
             //transform.position = newPosition;
             //Debug.Log(inputManager.primaryPosition());
-           // if (!((Mathf.Abs(playerTransform.position.x - leftEdge) < borderOffset) || (Mathf.Abs(playerTransform.position.x - rightEdge) < borderOffset)))
+           //if (! ((Mathf.Abs(newPosition.x - leftEdge) < borderOffset) || (Mathf.Abs(newPosition.x - rightEdge) < borderOffset)))
+            rb.MovePosition(newPosition);
+            //transform.position = new Vector3(Mathf.Clamp(transform.position.x, leftEdge, rightEdge), transform.position.y, transform.position.z);
                // rb.AddForce(newPosition, ForceMode.VelocityChange);
             yield return null;
         }
