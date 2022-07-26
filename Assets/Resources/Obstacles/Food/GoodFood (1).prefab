@@ -108,6 +108,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381eef54d40599841a31deb66bcbbc3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodType: 0
+  collectablesType: 0
+  collectableCount: 1
+  collectableMulitiplicator: 0.1
   percentToAdd: 10
   energyToAdd: 10
