@@ -6,13 +6,12 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    [SerializeField] private ThrowPlayer tp;
     [SerializeField] private GameObject granny;
     [SerializeField] private GameObject image;
     private Animator anim;
 
     private float endPos = -240;
-    private PlayerControls touchControls;
+    public PlayerControls touchControls;
     private ForwardMovement fm;
     private Camera camera;
     private Rigidbody rb;
@@ -24,7 +23,6 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         anim = granny.GetComponent<Animator>();
-        tp = GetComponent<ThrowPlayer>();
         touchControls = new PlayerControls();
         camera = Camera.main;
     }
@@ -53,8 +51,8 @@ public class InputManager : MonoBehaviour
 
         Destroy(image);
         granny.transform.eulerAngles = new Vector3(0, 180, 0);
-        rb.constraints = RigidbodyConstraints.None;
-        rb.freezeRotation = true;
+        //rb.constraints = RigidbodyConstraints.None;
+        //rb.freezeRotation = true;
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         anim.SetBool("isStarted", true);
         //Debug.Log("GAME START"); 
@@ -75,7 +73,9 @@ public class InputManager : MonoBehaviour
         float progress = (transform.position.z) / (endPos / 100) / 100;
 
         //Debug.Log(progress);
+
         GetComponent<ThrowPlayer>()?.End(progress);
+        touchControls.Disable();
     }
 
 }

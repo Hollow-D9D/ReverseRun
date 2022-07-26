@@ -21,7 +21,8 @@ public class GameProgress : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float progress = Player.transform.position.z / endPos * startWidth / -100;
+        float progress = (Player.transform.position.z) / (endPos / 100) / 100;
+
         if (showProgress)
         {
             showProgress.fillAmount = 1 - progress;

@@ -9,26 +9,19 @@ public class ThrowPlayer : MonoBehaviour
 {
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Image[] images;
-    [SerializeField] private GameObject bone;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private Rigidbody rbLeftArm;
-    [SerializeField] private Rigidbody rbRightArm;
     [SerializeField] private GameObject winCamera;
 
 
-    private Joint joint;
     private Camera cam;
-    private CameraSwitchPosition cameraMove;
     private ForwardMovement fm;
     private RagdollSwitch rgSwitch;
 
     void Awake()
     {
         rgSwitch = GetComponent<RagdollSwitch>();
-        joint = bone.GetComponent<FixedJoint>();
         cam = Camera.main;
         fm = GetComponent<ForwardMovement>();
-        cameraMove = cam.GetComponent<CameraSwitchPosition>();
     }
 
     private void Throw(float progress)
@@ -48,7 +41,6 @@ public class ThrowPlayer : MonoBehaviour
     public void End(float progress)
     {
         fm.enabled = false;
-        Destroy(joint);
         Destroy(images[0]);
         Destroy(images[1]);
         rgSwitch.Switch();
@@ -63,7 +55,8 @@ public class ThrowPlayer : MonoBehaviour
     public void Fail()
     {
         //rb.freezeRotation = false;
-        rb.AddForce(Vector3.up * 5, ForceMode.Impulse);
+        rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
+        rb.AddForce(Vector3.back * 200, ForceMode.Impulse);
         Time.timeScale = 0.8f;
         //cameraMove.CameraUpfront();
         //cameraMove.CameraUpfront();
