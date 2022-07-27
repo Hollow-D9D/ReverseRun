@@ -14,7 +14,7 @@ public class ForwardMovement : MonoBehaviour {
     // Start is called before the first frame update
     private void Awake() {
         rb = GetComponent<Rigidbody>();
-    } 
+    }
 
     void FixedUpdate() {
         if(rb.velocity.z > -10)
@@ -26,7 +26,7 @@ public class ForwardMovement : MonoBehaviour {
         //        Debug.Log(rb.velocity.z);
 
         ChangeEnergy(-energyUsed * Time.fixedDeltaTime);
-        CalculateSpeed(energyUsed*Time.fixedDeltaTime);
+        CalculateSpeed(energyUsed * Time.fixedDeltaTime);
     }
 
     public void OnValueChange(float energyPercentToAdd,float speedPercentToAdd) {

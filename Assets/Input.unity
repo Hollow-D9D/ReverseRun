@@ -520,6 +520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 749d612637d408140b95fa8a913afda2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballsManager: {fileID: 1586158052}
   tp: {fileID: 1888450152}
   granny: {fileID: 919132147559088969}
   image: {fileID: 1033700472}
@@ -3888,7 +3889,7 @@ GameObject:
   - component: {fileID: 1586158051}
   - component: {fileID: 1586158052}
   m_Layer: 0
-  m_Name: SpawnManager
+  m_Name: BallsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3915,11 +3916,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1586158050}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b79476a6a88f784584650a4692ad3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movement: {fileID: 447863070}
   spawns:
   - {fileID: 1690269192}
   - {fileID: 16499986}

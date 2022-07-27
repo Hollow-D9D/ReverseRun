@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Obstacles {
     public class BallsManager : MonoBehaviour {
+        [SerializeField] private ForwardMovement movement;
+
         [SerializeField] private Transform[] spawns;
         [SerializeField] private GameObject ball;
 
@@ -9,6 +12,14 @@ namespace Assets.Scripts.Obstacles {
         [SerializeField] private float createPerNSeconds;
 
         private float _timer;
+
+        private IEnumerator Start() {
+            Debug.Log(movement.enabled);
+            if(movement.enabled == false)
+                yield return null;
+
+            gameObject.SetActive(true);
+        }
         private void Update() {
             if(startTime > 0) {
                 startTime -= Time.deltaTime;

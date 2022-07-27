@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using Assets.Scripts.Obstacles;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
-public class InputManager : MonoBehaviour
-{
+public class InputManager : MonoBehaviour {
+    [SerializeField] private BallsManager ballsManager;
+
     [SerializeField] private ThrowPlayer tp;
     [SerializeField] private GameObject granny;
     [SerializeField] private GameObject image;
@@ -16,61 +15,56 @@ public class InputManager : MonoBehaviour
     private ForwardMovement fm;
     private Camera camera;
     private Rigidbody rb;
-    
+
     public delegate void StartMove(Vector2 position);
 
     public event StartMove OnMove;
 
-    private void Awake()
-    {
+    private void Awake() {
         anim = granny.GetComponent<Animator>();
         tp = GetComponent<ThrowPlayer>();
         touchControls = new PlayerControls();
         camera = Camera.main;
     }
 
-    private void OnEnable()
-    {
+    private void OnEnable() {
         touchControls.Enable();
     }
 
-    private void OnDisable()
-    {
+    private void OnDisable() {
         touchControls.Disable();
     }
 
-    private void Start()
-    {
+    private void Start() {
         touchControls.Touch.Start.started += ctx => GameStart(ctx);
         touchControls.Touch.Start.canceled += ctx => GameOver(ctx);
         rb = GetComponent<Rigidbody>();
         fm = GetComponent<ForwardMovement>();
- 
+
     }
-    public void GameStart(InputAction.CallbackContext ctx)
-    {
+    public void GameStart(InputAction.CallbackContext ctx) {
         fm.enabled = true;
 
+        if(ballsManager != null)
+            ballsManager.enabled = true;
+
         Destroy(image);
-        granny.transform.eulerAngles = new Vector3(0, 180, 0);
+        granny.transform.eulerAngles = new Vector3(0,180,0);
         rb.constraints = RigidbodyConstraints.None;
         rb.freezeRotation = true;
-        anim.SetBool("isStarted", true);
+        anim.SetBool("isStarted",true);
         //Debug.Log("GAME START"); 
-        if (OnMove != null) OnMove(primaryPosition());
+        if(OnMove != null) OnMove(primaryPosition());
     }
 
-    public float getTouchX()
-    {
+    public float getTouchX() {
         return touchControls.Touch.Move.ReadValue<Vector2>().x;
     }
-    public Vector3 primaryPosition()
-    {
-        return Utils.ScreenToWorld(camera, touchControls.Touch.Move.ReadValue<Vector2>());
+    public Vector3 primaryPosition() {
+        return Utils.ScreenToWorld(camera,touchControls.Touch.Move.ReadValue<Vector2>());
     }
 
-    public void GameOver(InputAction.CallbackContext ctx)
-    {
+    public void GameOver(InputAction.CallbackContext ctx) {
         float progress = (transform.position.z) / (endPos / 100) / 100;
 
         //Debug.Log(progress);
