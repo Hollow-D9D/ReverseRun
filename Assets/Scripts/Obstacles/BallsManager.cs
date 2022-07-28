@@ -12,29 +12,18 @@ namespace Assets.Scripts.Obstacles {
         [SerializeField] private float createPerNSeconds;
 
         private float timer;
-        private bool startShooting;
+        private bool startShooting = true;
 
-        private IEnumerator Start() {
-            if(movement.enabled == false)
-                yield return null;
 
-            while(true) {
-                StartCoroutine(StartShooting());
-            }
-        }
         private void Update() {
-            //if(startTime > 0) {
-            //    startTime -= Time.deltaTime;
-            //    return;
-            //}
+            if(!movement.enabled || !startShooting) return;
+            
+            if(startTime > 0) {
+                startTime -= Time.deltaTime;
+                return;
+            }
 
-            //timer += Time.deltaTime;
-
-            //if(timer >= createPerNSeconds) {
-            //    Instantiate(ball,GetRandomPosition(),Quaternion.identity);
-            //    timer = 0;
-            //}
-
+            StartCoroutine(StartShooting());
         }
 
         private Vector3 GetRandomPosition() {
@@ -42,9 +31,11 @@ namespace Assets.Scripts.Obstacles {
         }
 
         private IEnumerator StartShooting() {
+            startShooting = false;
             yield return new WaitForSeconds(createPerNSeconds);
 
             Instantiate(ball,GetRandomPosition(),Quaternion.identity);
+            startShooting = true;
         }
     }
 }
