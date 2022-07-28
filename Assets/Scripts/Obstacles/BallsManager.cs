@@ -11,31 +11,40 @@ namespace Assets.Scripts.Obstacles {
         [SerializeField] private float startTime;
         [SerializeField] private float createPerNSeconds;
 
-        private float _timer;
+        private float timer;
+        private bool startShooting;
 
         private IEnumerator Start() {
-            Debug.Log(movement.enabled);
             if(movement.enabled == false)
                 yield return null;
 
-            gameObject.SetActive(true);
+            while(true) {
+                StartCoroutine(StartShooting());
+            }
         }
         private void Update() {
-            if(startTime > 0) {
-                startTime -= Time.deltaTime;
-                return;
-            }
+            //if(startTime > 0) {
+            //    startTime -= Time.deltaTime;
+            //    return;
+            //}
 
-            _timer += Time.deltaTime;
+            //timer += Time.deltaTime;
 
-            if(_timer >= createPerNSeconds) {
-                Instantiate(ball,GetRandomPosition(),Quaternion.identity);
-                _timer = 0;
-            }
+            //if(timer >= createPerNSeconds) {
+            //    Instantiate(ball,GetRandomPosition(),Quaternion.identity);
+            //    timer = 0;
+            //}
+
         }
 
         private Vector3 GetRandomPosition() {
             return spawns[Random.Range(0,spawns.Length)].position;
+        }
+
+        private IEnumerator StartShooting() {
+            yield return new WaitForSeconds(createPerNSeconds);
+
+            Instantiate(ball,GetRandomPosition(),Quaternion.identity);
         }
     }
 }

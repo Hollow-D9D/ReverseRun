@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour {
-    [SerializeField] private BallsManager ballsManager;
+   // [SerializeField] private BallsManager ballsManager;
 
     [SerializeField] private ThrowPlayer tp;
     [SerializeField] private GameObject granny;
@@ -44,8 +44,8 @@ public class InputManager : MonoBehaviour {
     public void GameStart(InputAction.CallbackContext ctx) {
         fm.enabled = true;
 
-        if(ballsManager != null)
-            ballsManager.enabled = true;
+       // if(ballsManager != null)
+        //    ballsManager.enabled = true;
 
         Destroy(image);
         granny.transform.eulerAngles = new Vector3(0, 180, 0);
