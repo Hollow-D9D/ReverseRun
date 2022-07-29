@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using DG.Tweening;
 
 
@@ -10,22 +11,19 @@ public class ThrowPlayer : MonoBehaviour
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Image[] images;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject winCamera;
 
-
-    private Camera cam;
     private ForwardMovement fm;
     private RagdollSwitch rgSwitch;
 
     void Awake()
     {
         rgSwitch = GetComponent<RagdollSwitch>();
-        cam = Camera.main;
         fm = GetComponent<ForwardMovement>();
     }
 
     private void Throw(float progress)
     {
+        Camera.main.GetComponent<CameraSwitchPosition>().Win();
         rb.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
        // rbLeftArm.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
         //rbRightArm.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
@@ -44,16 +42,25 @@ public class ThrowPlayer : MonoBehaviour
         Destroy(images[0]);
         Destroy(images[1]);
         rgSwitch.Switch();
-        cam.gameObject.SetActive(false);
-        winCamera.SetActive(true);
+        //cam.gameObject.SetActive(false);
+        //winCamera.SetActive(true);
+        
         if (progress < .88f)
             Throw(progress);
         else
             Fail();
+        StartCoroutine(reloadScene());
+    }
+
+    IEnumerator reloadScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void Fail()
     {
+        Camera.main.GetComponent<CameraSwitchPosition>().Lose();
         //rb.freezeRotation = false;
         rb.AddForce(Vector3.up * 200, ForceMode.Impulse);
         rb.AddForce(Vector3.back * 200, ForceMode.Impulse);

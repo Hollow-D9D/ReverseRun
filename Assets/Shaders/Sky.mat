@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: exo
+  m_Name: Sky
   m_Shader: {fileID: 4800000, guid: eb2dfc39f9d61c34b9157410d67bb157, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -21,6 +21,6 @@ Material:
     m_TexEnvs: []
     m_Floats: []
     m_Colors:
-    - _ColorA: {r: 0, g: 0.8396226, b: 0.41899797, a: 1}
-    - _ColorB: {r: 0.4377358, g: 1, b: 0.4672756, a: 1}
+    - _ColorA: {r: 0.81960785, g: 0.95686275, b: 0.98039216, a: 1}
+    - _ColorB: {r: 0.81960785, g: 0.95686275, b: 0.98039216, a: 1}
   m_BuildTextureStacks: []
