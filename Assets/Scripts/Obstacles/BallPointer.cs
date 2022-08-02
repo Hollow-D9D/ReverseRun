@@ -1,45 +1,62 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteAlways]
-public class BallPointer : MonoBehaviour {
-    [SerializeField] private Transform playerTransform;
+namespace Assets.Scripts.Obstacles {
+#if UNITY_EDITOR
+    [ExecuteAlways]
+#endif
+    public class BallPointer : MonoBehaviour {
+        [SerializeField] private Transform playerTransform;
 
-    [SerializeField] private Transform pointerIconTransform;
-    [SerializeField] private Image pointerIcon;
+        [SerializeField] private Transform pointerIconTransform;
+        [SerializeField] private Image pointerIcon;
 
-     private Camera camera;
-    
-    private void Start() {
-        camera = Camera.main;
-    }
-    private void Update() {
-        Vector3 toBall = transform.position - playerTransform.position;
+        private Camera camera;
 
-        Ray ray = new Ray(playerTransform.position,toBall);
-        //Debug.DrawRay(playerTransform.position,toBall);
-        Plane[] planes = GeometryUtility.CalculateFrustumPlanes(camera);
+        private Vector3 toBall;
+        private Vector3 worldPosition;
+        private Ray ray;
+        private Plane[] planes;
+        private float minDistance;
+        private void Start() {
+            camera = Camera.main;
+        }
+        private void Update() {
+            minDistance = Mathf.Infinity;
 
-        float minDistance = Mathf.Infinity;
-        if(planes[3].Raycast(ray,out float distance))
-            if(distance < minDistance)
-                minDistance = distance;
+            toBall = transform.position - playerTransform.position;
 
-        minDistance = Mathf.Clamp(minDistance,0,toBall.magnitude);
+            ray = new Ray(playerTransform.position,toBall);
+            planes = GeometryUtility.CalculateFrustumPlanes(camera);
 
-        Vector3 worldPosition = ray.GetPoint(minDistance);
+            CheckUpPlaneRaycast();
 
-        pointerIconTransform.position = camera.WorldToScreenPoint(worldPosition);
+            minDistance = Mathf.Clamp(minDistance,0,toBall.magnitude);
 
-        if(toBall.magnitude > minDistance)
+            worldPosition = ray.GetPoint(minDistance);
+
+            pointerIconTransform.position = camera.WorldToScreenPoint(worldPosition);
+
+            SetVisabilityOfPointer();
+        }
+        public void Construct(Transform playerTransform,Transform pointerIconTransform,Image pointerIcon) {
+            this.playerTransform = playerTransform;
+            this.pointerIconTransform = pointerIconTransform;
+            this.pointerIcon = pointerIcon;
+        }
+
+        private void SetVisabilityOfPointer() {
+            if(toBall.magnitude > minDistance)
                 pointerIcon.enabled = true;
             else
                 pointerIcon.enabled = false;
-    }
+        }
 
-    public void Construct(Transform playerTransform,Transform pointerIconTransform,Image pointerIcon) {
-        this.playerTransform = playerTransform;
-        this.pointerIconTransform = pointerIconTransform;
-        this.pointerIcon = pointerIcon;
+        private void CheckUpPlaneRaycast() {
+            if(planes[3].Raycast(ray,out float distance))
+                if(distance < minDistance)
+                    minDistance = distance;
+        }
+
     }
 }

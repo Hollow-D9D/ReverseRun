@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts {
     public class ScoreMultiplicator {
-        private ScoreMultiplicator(){}
+        private ScoreMultiplicator() { }
 
         public static ScoreMultiplicator GetInstance() =>
             instance ?? new ScoreMultiplicator();
@@ -17,15 +17,11 @@ namespace Assets.Scripts {
         private float negMultiplicator;
 
         public void Add(Collectable collectable) {
-            if(collectable.GetType() == CollectableType.Positive) {
+            if(collectable.GetType() == CollectableType.Positive)
                 AddPositive(collectable.GetMultiplicator());
-                Debug.Log(positiveCount);
-                Debug.Log(posMultiplicator);
-            } else {
+            else
                 AddNegative(collectable.GetMultiplicator());
-                Debug.Log(negativeCount);
-                Debug.Log(negMultiplicator);
-            }
+
         }
 
         public void AddPositive(float posMultiplicator) {
@@ -39,7 +35,7 @@ namespace Assets.Scripts {
 
         public float GetMultiplicator() {
             float result = (positiveCount * posMultiplicator) + (negativeCount * negMultiplicator);
-            
+
             if(result <= 0) return 0;
             return result;
         }
