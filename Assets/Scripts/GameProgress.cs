@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameProgress : MonoBehaviour
 {
+    [SerializeField] private RopeColorController ropeColorController;
+
     [SerializeField] private Image showProgress;
     [SerializeField] private Transform Player;
 
@@ -22,6 +24,7 @@ public class GameProgress : MonoBehaviour
     void FixedUpdate()
     {
         float progress = (Player.transform.position.z) / (endPos / 100) / 100;
+        ropeColorController.ChangeColor(progress);
 
         if (showProgress)
         {

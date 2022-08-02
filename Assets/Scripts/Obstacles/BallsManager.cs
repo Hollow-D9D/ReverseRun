@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +20,13 @@ namespace Assets.Scripts.Obstacles {
         [SerializeField] private float createPerNSeconds;
 
         private bool startShooting = true;
+        private List<GameObject> pointersList;
+        private List<GameObject> ballsList;
+
+        private void Start() {
+            pointersList =new List<GameObject> ();
+            ballsList = new List<GameObject> ();
+        }
 
         private void Update() {
             if(!movement.enabled || !startShooting) return;
@@ -29,6 +37,16 @@ namespace Assets.Scripts.Obstacles {
             }
 
             StartCoroutine(StartShooting());
+        }
+
+        public void DisablePointersAndBalls() {
+            for(int i = 0;i < pointersList.Count;i++) {
+                //pointersList[i].SetActive(false);
+                //ballsList[i].SetActive(false);
+                Destroy(pointersList[i]);
+                Destroy(ballsList[i]);
+
+            }
         }
 
         private Vector3 GetRandomPosition() {
@@ -45,13 +63,18 @@ namespace Assets.Scripts.Obstacles {
 
         private void InitBall() {
             GameObject ballPrefab = Instantiate(ball,GetRandomPosition(),Quaternion.identity);
-            GameObject pointerIconPrefab =Instantiate(pointerIcon,pointersCanvas.transform);
+            GameObject pointerIconPrefab = Instantiate(pointerIcon,pointersCanvas.transform);
+            pointersList.Add(pointerIconPrefab);
+            ballsList.Add(ballPrefab);
+
             ballPrefab.GetComponentInChildren<BallPointer>()
                 .Construct(playerTransform,
                 pointerIconPrefab.transform,
                 pointerIconPrefab.GetComponentInChildren<Image>());
-            Destroy(ballPrefab,destroyAfterNSeconds);
-            Destroy(pointerIconPrefab,destroyAfterNSeconds);
+
+           // Destroy(ballPrefab,destroyAfterNSeconds);
+           // Destroy(pointerIconPrefab,destroyAfterNSeconds);
         }
+
     }
 }

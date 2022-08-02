@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
-
+using Assets.Scripts.Obstacles;
 
 public class ThrowPlayer : MonoBehaviour
 {
+   [SerializeField] private BallsManager ballsManager; 
+
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Image[] images;
     [SerializeField] private Rigidbody rb;
@@ -42,9 +42,13 @@ public class ThrowPlayer : MonoBehaviour
         Destroy(images[0]);
         Destroy(images[1]);
         rgSwitch.Switch();
+
+        ballsManager.DisablePointersAndBalls();
+        ballsManager.enabled = false;
+
         //cam.gameObject.SetActive(false);
         //winCamera.SetActive(true);
-        
+
         if (progress < .88f)
             Throw(progress);
         else
