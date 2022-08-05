@@ -15,11 +15,7 @@ public class Winscore : MonoBehaviour
         StartCoroutine(reloadScene());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     IEnumerator reloadScene()
     {
