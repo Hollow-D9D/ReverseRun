@@ -1,13 +1,13 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using Assets.Scripts.Obstacles;
+using DG.Tweening;
+
 
 public class ThrowPlayer : MonoBehaviour
 {
-   [SerializeField] private BallsManager ballsManager; 
-
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Image[] images;
     [SerializeField] private Rigidbody rb;
@@ -20,7 +20,11 @@ public class ThrowPlayer : MonoBehaviour
         rgSwitch = GetComponent<RagdollSwitch>();
         fm = GetComponent<ForwardMovement>();
     }
-
+    void Update()
+    {
+        
+    
+    }
     private void Throw(float progress)
     {
         Camera.main.GetComponent<CameraSwitchPosition>().Win();
@@ -30,10 +34,15 @@ public class ThrowPlayer : MonoBehaviour
         if (progress >= 0.15f)
         {
             rb.AddForce(Vector3.up * progress * upForce, ForceMode.Impulse);
-          //  rbLeftArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
-           // rbRightArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
-           // cameraMove.CameraFromRight();
+            //  rbLeftArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
+            // rbRightArm.AddForce(Vector3.forward * progress * upForce, ForceMode.Impulse);
+            // cameraMove.CameraFromRight();
+            StartCoroutine(ScoreScene());
+            //SceneManager.LoadScene("NextLevel");
+            Debug.Log("yes");
+            Debug.Log("yes"+progress);
         }
+
     }
 
     public void End(float progress)
@@ -42,20 +51,37 @@ public class ThrowPlayer : MonoBehaviour
         Destroy(images[0]);
         Destroy(images[1]);
         rgSwitch.Switch();
-
-        ballsManager.DisablePointersAndBalls();
-        ballsManager.enabled = false;
-
         //cam.gameObject.SetActive(false);
         //winCamera.SetActive(true);
 
         if (progress < .88f)
+        {
             Throw(progress);
-        else
-            Fail();
-        StartCoroutine(reloadScene());
+
+          //  StartCoroutine(ScoreScene());
+        }
+       if (progress<=.15f )
+        {  Fail();
+            
+            Invoke("Fail_cor", 4f);
+            Debug.Log("Merar");
+        }
+       // SceneManager.LoadScene("NextLevel");
+       
+        
     }
 
+    IEnumerator ScoreScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("NextLevel");
+    }
+
+    IEnumerator failScene()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("FailScene");
+    }
     IEnumerator reloadScene()
     {
         yield return new WaitForSeconds(10f);
@@ -71,12 +97,19 @@ public class ThrowPlayer : MonoBehaviour
         Time.timeScale = 0.8f;
         //cameraMove.CameraUpfront();
         //cameraMove.CameraUpfront();
-        Destroy(GetComponent<PlayerController>());
-        Destroy(this);
-        
+       // Destroy(GetComponent<PlayerController>());
+     
+        //Destroy(this);
+        //SceneManager.LoadScene("FailScene");
         //Vector3 globalPos = transform.position;
-            //new Vector3(transform.position.x + cam.transform.position.x, transform.position.y + cam.transform.position.y, transform.position.z + cam.transform.position.z);
+        //new Vector3(transform.position.x + cam.transform.position.x, transform.position.y + cam.transform.position.y, transform.position.z + cam.transform.position.z);
         //cam.transform.parent = null;
         //cam.transform.position = globalPos;
+        // Invoke("Fail_cor", 0.2f);
+    }
+
+    public void Fail_cor()
+    {
+        SceneManager.LoadScene("FailScene");
     }
 }

@@ -9,11 +9,15 @@ public class InputManager : MonoBehaviour {
     [SerializeField] private GameObject image;
     private Animator anim;
 
+
     private float endPos = -240;
     public PlayerControls touchControls;
     private ForwardMovement fm;
     private Camera camera;
     private Rigidbody rb;
+    public float progress;
+    public  float  runprogress;
+    public bool Gameover;
 
     public delegate void StartMove(Vector2 position);
 
@@ -25,6 +29,11 @@ public class InputManager : MonoBehaviour {
         camera = Camera.main;
     }
 
+    private void Update()
+    { 
+      runprogress = (transform.position.z) / (endPos / 100) / 100;
+
+    }
     private void OnEnable() {
         touchControls.Enable();
     }
@@ -61,12 +70,13 @@ public class InputManager : MonoBehaviour {
     }
 
     public void GameOver(InputAction.CallbackContext ctx) {
-        float progress = (transform.position.z) / (endPos / 100) / 100;
+      progress = (transform.position.z) / (endPos / 100) / 100;
 
-        //Debug.Log(progress);
-
+        Debug.Log("asd"+progress);
+       
         GetComponent<ThrowPlayer>()?.End(progress);
         touchControls.Disable();
+        Gameover = true;
     }
 
 }
