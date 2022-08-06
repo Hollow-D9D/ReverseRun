@@ -7,7 +7,7 @@ public class FoodGeneration : MonoBehaviour {
     [SerializeField] private float endZValue = -155f;
     [SerializeField] private float spawnYValue;
 
-    [SerializeField] private int foodCount;
+    [SerializeField] private int foodCount = 4;
 
     private GameObject[] FoodPrefabs;
     private float foodInterval;
