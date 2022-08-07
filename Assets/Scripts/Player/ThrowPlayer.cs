@@ -1,13 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using DG.Tweening;
-
+using Assets.Scripts.Obstacles;
 
 public class ThrowPlayer : MonoBehaviour
 {
+    [SerializeField] private BallsManager ballsManager;
+
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Image[] images;
     [SerializeField] private Rigidbody rb;
@@ -20,17 +20,13 @@ public class ThrowPlayer : MonoBehaviour
         rgSwitch = GetComponent<RagdollSwitch>();
         fm = GetComponent<ForwardMovement>();
     }
-    void Update()
-    {
-        
-    
-    }
+ 
     private void Throw(float progress)
     {
         Camera.main.GetComponent<CameraSwitchPosition>().Win();
         rb.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
        // rbLeftArm.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
-        //rbRightArm.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
+       //rbRightArm.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
         if (progress >= 0.15f)
         {
             rb.AddForce(Vector3.up * progress * upForce, ForceMode.Impulse);
@@ -51,10 +47,13 @@ public class ThrowPlayer : MonoBehaviour
         Destroy(images[0]);
         Destroy(images[1]);
         rgSwitch.Switch();
+
+        ballsManager.DisablePointersAndBalls();
+
         //cam.gameObject.SetActive(false);
         //winCamera.SetActive(true);
 
-        if (progress < .88f)
+        if(progress < .88f)
         {
             Throw(progress);
 

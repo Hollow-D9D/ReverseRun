@@ -41,9 +41,7 @@ public class FoodGeneration : MonoBehaviour {
 
     private float InitZValue(ref float startZValue) {
         float zValue = Random.Range(startZValue,startZValue + foodInterval);
-        Debug.Log(zValue);
         startZValue += foodInterval;
-        Debug.Log(startZValue);
 
         return zValue;
     }

@@ -6,7 +6,7 @@ namespace Assets.Scripts.Obstacles {
 
         [SerializeField] protected float percentToAdd;
         [SerializeField] protected float energyToAdd;
-
+        
         private void OnTriggerEnter(Collider other) {
 
             if(other.gameObject.GetComponentInParent<ForwardMovement>())

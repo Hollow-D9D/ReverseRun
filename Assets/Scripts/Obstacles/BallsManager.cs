@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 namespace Assets.Scripts.Obstacles {
     public class BallsManager : MonoBehaviour {
-        private const float destroyAfterNSeconds = 10f;
-
         [SerializeField] private ForwardMovement movement;
 
         [SerializeField] private Transform playerTransform;
@@ -68,9 +66,6 @@ namespace Assets.Scripts.Obstacles {
                 .Construct(playerTransform,
                 pointerIconPrefab.transform,
                 pointerIconPrefab.GetComponentInChildren<Image>());
-
-            // Destroy(ballPrefab,destroyAfterNSeconds);
-            // Destroy(pointerIconPrefab,destroyAfterNSeconds);
         }
     }
 }
