@@ -223,6 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hideAndShowCount: 6
+  hideAndShowInterval: 0.341
   text: {fileID: 10411281}
 --- !u!114 &10411281
 MonoBehaviour:
@@ -253,8 +254,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278925055
-  m_fontColor: {r: 1, g: 0.2104244, b: 0.042452812, a: 1}
+    rgba: 4278190335
+  m_fontColor: {r: 1, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
