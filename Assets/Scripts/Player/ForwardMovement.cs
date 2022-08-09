@@ -1,6 +1,5 @@
 using Assets.Scripts.Obstacles;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ForwardMovement : MonoBehaviour {
 
@@ -11,10 +10,11 @@ public class ForwardMovement : MonoBehaviour {
     [SerializeField] private float energyUsed;
 
     private float endPos = -240;
-    // Start is called before the first frame update
+
     private void Awake() {
         rb = GetComponent<Rigidbody>();
     }
+    private void Start() => energy.ShowEnergyBar();
 
     void FixedUpdate() {
         if(rb.velocity.z > -10)

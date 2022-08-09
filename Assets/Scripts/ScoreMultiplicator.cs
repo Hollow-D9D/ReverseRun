@@ -34,9 +34,9 @@ namespace Assets.Scripts {
         }
 
         public float GetMultiplicator() {
-            float result = (positiveCount * posMultiplicator) + (negativeCount * negMultiplicator);
+            float result = (positiveCount * posMultiplicator) + (negativeCount * negMultiplicator) + 1;
 
-            if(result <= 0) return 0;
+            if(result <= 0) return 1;
             return result;
         }
     }

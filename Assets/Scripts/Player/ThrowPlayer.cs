@@ -1,14 +1,12 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Obstacles;
 
 public class ThrowPlayer : MonoBehaviour
 {
-    [SerializeField] private BallsManager ballsManager;
+    [SerializeField] private AdditionalObstacleManager addObsManager;
     [SerializeField] private float upForce, backForce;
-    [SerializeField] private Image[] images;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameProgress gameProgress;
 
@@ -46,50 +44,26 @@ public class ThrowPlayer : MonoBehaviour
             gameProgress.FailCor();
     }
 
-    public void End(float progress)
-    {
+    public void End(float progress) {
         fm.enabled = false;
         rgSwitch.Switch();
 
-        ballsManager.DisablePointersAndBalls();
-
+        HidePointersAndRelease();
         //cam.gameObject.SetActive(false);
         //winCamera.SetActive(true);
 
-        if(progress < .88f)
-        {
+        if(progress < .88f) {
             Throw(progress);
-            
-          //  StartCoroutine(ScoreScene());
-        }
-        else
-        {  Fail();
+
+            //  StartCoroutine(ScoreScene());
+        } else {
+            Fail();
 
             gameProgress.FailCor();
             Debug.Log("Merar");
         }
-       // SceneManager.LoadScene("NextLevel");
-       
-        
+        // SceneManager.LoadScene("NextLevel");
     }
-
-    IEnumerator ScoreScene()
-    {
-        yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene("NextLevel");
-    }
-
-    IEnumerator failScene()
-    {
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("FailScene");
-    }
-    IEnumerator reloadScene()
-    {
-        yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-
     public void Fail()
     {
         inputManager.Gameover = 2;
@@ -109,4 +83,14 @@ public class ThrowPlayer : MonoBehaviour
     }
 
 
+    private IEnumerator ScoreScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("NextLevel");
+    }
+
+    private void HidePointersAndRelease() {
+        addObsManager.DisablePointersAndBalls();
+        gameProgress.releaseText.ShowText(false);
+    }
 }

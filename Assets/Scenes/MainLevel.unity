@@ -591,7 +591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &255686233
 RectTransform:
   m_ObjectHideFlags: 0
@@ -811,8 +811,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabf89ed500c92b4e9bf12906375275a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreint1: 0
-  score1: 0
   scoretext: {fileID: 827606421}
 --- !u!4 &447863068
 Transform:
@@ -954,10 +952,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c814f2b5c9a547973eb8af2a70f47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warningText: {fileID: 10411280}
+  releaseText: {fileID: 10411280}
+  ReleaseTextStartValue: 0.75
   ropeColorController: {fileID: 81621642}
   Player: {fileID: 447863068}
-  progress: 0
 --- !u!114 &448694631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4628,7 +4626,7 @@ MonoBehaviour:
   startZValue: -15
   endZValue: -155
   spawnYValue: 0.5
-  foodCount: 4
+  foodCount: 10
 --- !u!4 &1579005932
 Transform:
   m_ObjectHideFlags: 0
@@ -4688,6 +4686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   energy: 1
   energyBarPointer: {fileID: 1698533736}
+  energyBar: {fileID: 255686232}
 --- !u!1 &1615262580
 GameObject:
   m_ObjectHideFlags: 0
@@ -5177,14 +5176,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8558060cc1b86649a7ab76d72a55e6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ballsManager: {fileID: 2145371700}
+  addObsManager: {fileID: 2145371700}
   upForce: 2000
   backForce: 10000
-  images:
-  - {fileID: 1168644535}
-  - {fileID: 833962457}
-  - {fileID: 0}
   rb: {fileID: 1041070777}
+  gameProgress: {fileID: 448694630}
 --- !u!1001 &1897514069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5671,7 +5667,7 @@ GameObject:
   - component: {fileID: 2145371699}
   - component: {fileID: 2145371700}
   m_Layer: 0
-  m_Name: BallManager
+  m_Name: AddObsManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5712,7 +5708,7 @@ MonoBehaviour:
   - {fileID: 2024427645}
   - {fileID: 1557948533}
   - {fileID: 1885269067}
-  ball: {fileID: 531649056693914003, guid: 2d655eb55c2a1f945985165af6d39df0, type: 3}
+  addObs: {fileID: 531649056693914003, guid: 2d655eb55c2a1f945985165af6d39df0, type: 3}
   startTime: 2
   createPerNSeconds: 4
 --- !u!4 &162874604816992845

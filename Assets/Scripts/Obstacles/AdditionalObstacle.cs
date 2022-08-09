@@ -4,7 +4,7 @@ namespace Assets.Scripts.Obstacles {
 
     [RequireComponent(typeof(Rigidbody))]
 
-    public class Ball : MonoBehaviour {
+    public class AdditionalObstacle : MonoBehaviour {
         [SerializeField] private float force;
 
         private Rigidbody rigidbody;

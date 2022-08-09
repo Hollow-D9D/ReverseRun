@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ReleaseWarning : MonoBehaviour {
 
@@ -15,10 +14,14 @@ public class ReleaseWarning : MonoBehaviour {
 
     public IEnumerator Show() {
         for(int i = 0;i < hideAndShowCount;i++) {
-            text.enabled = true;
+            ShowText(true);
             yield return new WaitForSeconds(hideAndShowInterval);
-            text.enabled = false;
+            ShowText(false);
             yield return new WaitForSeconds(hideAndShowInterval);
         }
     }
+    public void ShowText(bool show) {
+        text.enabled = show;
+    }
+
 }

@@ -6,7 +6,7 @@ namespace Assets.Scripts.Player {
         private void OnTriggerEnter(Collider other) {
             //    other.gameObject.GetComponent<Ball>()
             //        .OnPlayerTrigger(GetComponentInParent<ThrowPlayer>());
-            if(other.gameObject.GetComponent<Ball>())
+            if(other.gameObject.GetComponent<AdditionalObstacle>())
                 GetComponentInParent<ThrowPlayer>().End(1f);
         }
     }

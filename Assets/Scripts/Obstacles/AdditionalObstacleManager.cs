@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets.Scripts.Obstacles {
-    public class BallsManager : MonoBehaviour {
+    public class AdditionalObstacleManager : MonoBehaviour {
         [SerializeField] private ForwardMovement movement;
 
         [SerializeField] private Transform playerTransform;
@@ -12,7 +12,7 @@ namespace Assets.Scripts.Obstacles {
         [SerializeField] private Canvas pointersCanvas;
 
         [SerializeField] private Transform[] spawns;
-        [SerializeField] private GameObject ball;
+        [SerializeField] private GameObject addObs;
 
         [SerializeField] private float startTime;
         [SerializeField] private float createPerNSeconds;
@@ -57,7 +57,7 @@ namespace Assets.Scripts.Obstacles {
         }
 
         private void InitBall() {
-            GameObject ballPrefab = Instantiate(ball,GetRandomPosition(),Quaternion.identity);
+            GameObject ballPrefab = Instantiate(addObs,GetRandomPosition(),Quaternion.identity);
             GameObject pointerIconPrefab = Instantiate(pointerIcon,pointersCanvas.transform);
             pointersList.Add(pointerIconPrefab);
             ballsList.Add(ballPrefab);

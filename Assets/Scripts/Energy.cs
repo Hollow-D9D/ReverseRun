@@ -5,7 +5,9 @@ namespace Assets.Scripts.Obstacles {
     public class Energy : MonoBehaviour{
 
         [SerializeField] private float energy;
+
         [SerializeField] private Image energyBarPointer;
+        [SerializeField] private GameObject energyBar;
 
         [SerializeField] private const int minPointerYValue = 0;
         [SerializeField] private const int maxPointerYValue = 250;
@@ -13,6 +15,10 @@ namespace Assets.Scripts.Obstacles {
         private void Start() {
             SetPointerPosition();
             energyBarPointer.gameObject.SetActive(true);
+        }
+
+        public void ShowEnergyBar() {
+            energyBar.SetActive(true);
         }
 
         public float GetEnergy() => energy;

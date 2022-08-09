@@ -1,24 +1,24 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.UI;
 
-public class IntroPart : MonoBehaviour
-{
+public class IntroPart : MonoBehaviour {
     [SerializeField] private CinemachineVirtualCamera NearView;
     [SerializeField] private CinemachineVirtualCamera GameView;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Canvas canvas;
-    // Start is called before the first frame update
-    void Start()
-    {
-        canvas.enabled = false;
-        StartCoroutine(FTUE());
+
+    void Start() {
+        if(PlayerPrefs.GetInt("HideIntro") == 1) 
+            gameObject.SetActive(false);
+         else {
+            PlayerPrefs.SetInt("HideIntro",1);
+            canvas.enabled = false;
+            StartCoroutine(FTUE());
+        }
     }
 
-    private IEnumerator FTUE()
-    {
+    private IEnumerator FTUE() {
         inputManager.touchControls.Disable();
         yield return new WaitForSeconds(1f);
         NearView.Priority = 12;
@@ -29,8 +29,7 @@ public class IntroPart : MonoBehaviour
         inputManager.touchControls.Enable();
     }
     // Update is called once per frame
-    void Update()
-    {
-        
+    void Update() {
+
     }
 }
