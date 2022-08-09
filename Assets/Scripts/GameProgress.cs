@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameProgress : MonoBehaviour {
     private const float warningIconStartValue = 0.1f;
@@ -27,8 +29,16 @@ public class GameProgress : MonoBehaviour {
             showIcon = true;
             StartCoroutine(warningText.Show());
         }
-        //showProgress.rectTransform.sizeDelta = new Vector2(startWidth - progress , showProgress.rectTransform.sizeDelta.y);
-        //showProgress.rectTransform.anchoredPosition = new Vector2(startX + progress / 2 , showProgress.rectTransform.anchoredPosition.y );
+    }
+    public void FailCor()
+    {
+        StartCoroutine(ChangeScene());
+    }
 
+    private IEnumerator ChangeScene()
+    {
+
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene("FailScene");
     }
 }

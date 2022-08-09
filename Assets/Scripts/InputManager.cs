@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour {
     private Rigidbody rb;
     public float progress;
     public  float  runprogress;
-    public bool Gameover;
+    public int Gameover = 0;
 
     public delegate void StartMove(Vector2 position);
 
@@ -54,8 +54,6 @@ public class InputManager : MonoBehaviour {
 
         Destroy(image);
         granny.transform.eulerAngles = new Vector3(0, 180, 0);
-        //rb.constraints = RigidbodyConstraints.None;
-        //rb.freezeRotation = true;
         rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         anim.SetBool("isStarted", true);
         //Debug.Log("GAME START"); 
@@ -76,7 +74,6 @@ public class InputManager : MonoBehaviour {
        
         GetComponent<ThrowPlayer>()?.End(progress);
         touchControls.Disable();
-        Gameover = true;
     }
 
 }
