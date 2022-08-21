@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 namespace Assets.Scripts.Obstacles {
     public class Energy : MonoBehaviour{
@@ -11,6 +12,7 @@ namespace Assets.Scripts.Obstacles {
 
         [SerializeField] private const int minPointerYValue = 0;
         [SerializeField] private const int maxPointerYValue = 250;
+        
 
         private void Start() {
             SetPointerPosition();

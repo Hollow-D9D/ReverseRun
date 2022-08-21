@@ -7,11 +7,11 @@ public class IntroPart : MonoBehaviour {
     [SerializeField] private CinemachineVirtualCamera GameView;
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Canvas canvas;
-
-    void Start() {
+    
+    void Awake() {
         if(PlayerPrefs.GetInt("HideIntro") == 1) 
             gameObject.SetActive(false);
-         else {
+        else {
             PlayerPrefs.SetInt("HideIntro",1);
             canvas.enabled = false;
             StartCoroutine(FTUE());

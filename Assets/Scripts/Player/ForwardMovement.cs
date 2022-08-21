@@ -1,11 +1,11 @@
 using Assets.Scripts.Obstacles;
 using UnityEngine;
+using System.Collections;
 
 public class ForwardMovement : MonoBehaviour {
 
     private Rigidbody rb;
     [SerializeField] private float speed = 2f;
-
     [SerializeField] private Energy energy;
     [SerializeField] private float energyUsed;
 
@@ -24,10 +24,10 @@ public class ForwardMovement : MonoBehaviour {
         if(progress > 0.88f)
             GetComponent<ThrowPlayer>().End(progress);
         //        Debug.Log(rb.velocity.z);
-
         ChangeEnergy(-energyUsed * Time.fixedDeltaTime);
         CalculateSpeed(energyUsed * Time.fixedDeltaTime);
     }
+
 
     public void OnValueChange(float energyPercentToAdd,float speedPercentToAdd) {
         ChangeEnergy(energyPercentToAdd);
