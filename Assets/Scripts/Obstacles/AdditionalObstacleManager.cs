@@ -42,6 +42,7 @@ namespace Assets.Scripts.Obstacles {
                 Destroy(pointersList[i]);
                 Destroy(ballsList[i]);
             }
+            pointersCanvas.enabled = false;
         }
 
         private Vector3 GetRandomPosition() {

@@ -17,8 +17,13 @@ namespace Assets.Scripts.Obstacles {
         }
 
         public void OnPlayerTrigger(ThrowPlayer throwPlayer) {
-            throwPlayer.End(1f);
-            Destroy(gameObject);
+            Debug.Log(throwPlayer.IsForwardMovementEnabled());
+            Debug.Log("lalalala");
+            if (throwPlayer.IsForwardMovementEnabled())
+            {
+                throwPlayer.End(1f);
+                Destroy(gameObject);
+            }
         }
     }
 }

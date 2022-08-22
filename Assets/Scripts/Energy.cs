@@ -32,7 +32,7 @@ namespace Assets.Scripts.Obstacles {
         }
 
         private void SetPointerPosition() =>
-            energyBarPointer.rectTransform.anchoredPosition = new Vector3(0,CalculateYValye());
+            energyBarPointer.fillAmount = energy / 1.5f;
 
         private float CalculateYValye() => 
             Mathf.Clamp(energy * 100,minPointerYValue,maxPointerYValue);

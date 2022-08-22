@@ -70,7 +70,6 @@ public class InputManager : MonoBehaviour {
     public void GameOver(InputAction.CallbackContext ctx) {
       progress = (transform.position.z) / (endPos / 100) / 100;
 
-        Debug.Log("asd"+progress);
        
         GetComponent<ThrowPlayer>()?.End(progress);
         touchControls.Disable();

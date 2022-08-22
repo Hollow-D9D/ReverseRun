@@ -14,6 +14,11 @@ public class ThrowPlayer : MonoBehaviour
     private ForwardMovement fm;
     private RagdollSwitch rgSwitch;
 
+    public bool IsForwardMovementEnabled()
+    {
+        return fm.enabled;
+    }
+
     void Awake()
     {
         rgSwitch = GetComponent<RagdollSwitch>();
@@ -37,8 +42,6 @@ public class ThrowPlayer : MonoBehaviour
             // cameraMove.CameraFromRight();
             StartCoroutine(ScoreScene());
             //SceneManager.LoadScene("NextLevel");
-            Debug.Log("yes");
-            Debug.Log("yes"+progress);
         }
         else
             gameProgress.FailCor();
