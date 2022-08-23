@@ -15,6 +15,7 @@ namespace Assets.Scripts.Obstacles {
 
         private Vector3 toBall;
         private Vector3 worldPosition;
+        private Vector3 swapedXCord;
         private Ray ray;
         private Plane[] planes;
         private float minDistance;
@@ -23,10 +24,10 @@ namespace Assets.Scripts.Obstacles {
         }
         private void Update() {
             minDistance = Mathf.Infinity;
+            swapedXCord = new Vector3(transform.position.x,playerTransform.position.y,playerTransform.position.z);
+            toBall = transform.position - swapedXCord;
 
-            toBall = transform.position - playerTransform.position;
-
-            ray = new Ray(playerTransform.position,toBall);
+            ray = new Ray(swapedXCord,toBall);
             planes = GeometryUtility.CalculateFrustumPlanes(camera);
 
             CheckUpPlaneRaycast();
