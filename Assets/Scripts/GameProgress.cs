@@ -32,7 +32,7 @@ public class GameProgress : MonoBehaviour {
 
     private IEnumerator ChangeScene() {
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("FailScene");
     }
 }
