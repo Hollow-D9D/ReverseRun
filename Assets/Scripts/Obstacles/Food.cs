@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Cinemachine;
 
 namespace Assets.Scripts.Obstacles {
    
@@ -6,6 +7,7 @@ namespace Assets.Scripts.Obstacles {
 
         [SerializeField] protected float percentToAdd;
         [SerializeField] protected float energyToAdd;
+        
         private void OnTriggerEnter(Collider other) {
             if(other.gameObject.GetComponentInParent<ForwardMovement>())
                 other.gameObject.GetComponentInParent<ForwardMovement>()
