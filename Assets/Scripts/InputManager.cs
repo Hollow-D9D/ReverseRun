@@ -16,7 +16,6 @@ public class InputManager : MonoBehaviour {
     private Camera camera;
     private Rigidbody rb;
     public float progress;
-    public  float  runprogress;
     public int Gameover = 0;
 
     public delegate void StartMove(Vector2 position);
@@ -29,11 +28,11 @@ public class InputManager : MonoBehaviour {
         camera = Camera.main;
     }
 
-    private void Update()
+    /*private void Update()
     { 
-      runprogress = (transform.position.z) / (endPos / 100) / 100;
+      runprogress = transform.position.z / endPos;
 
-    }
+    }*/
     private void OnEnable() {
         touchControls.Enable();
     }
@@ -68,7 +67,7 @@ public class InputManager : MonoBehaviour {
     }
 
     public void GameOver(InputAction.CallbackContext ctx) {
-      progress = (transform.position.z) / (endPos / 100) / 100;
+      progress = transform.position.z / endPos; // -80  -240 
 
        
         GetComponent<ThrowPlayer>()?.End(progress);

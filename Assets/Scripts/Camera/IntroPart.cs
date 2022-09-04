@@ -8,14 +8,15 @@ public class IntroPart : MonoBehaviour {
     [SerializeField] private InputManager inputManager;
     [SerializeField] private Canvas canvas;
     
-    void Awake() {
-        if(PlayerPrefs.GetInt("HideIntro") == 1) 
-            gameObject.SetActive(false);
-        else {
-            PlayerPrefs.SetInt("HideIntro",1);
+    void Start() {
+        /* if(PlayerPrefs.GetInt("HideIntro") == 1) 
+             gameObject.SetActive(false);
+         else {
+             PlayerPrefs.SetInt("HideIntro",1);
+          */
             canvas.enabled = false;
             StartCoroutine(FTUE());
-        }
+        //}
     }
 
     private IEnumerator FTUE() {

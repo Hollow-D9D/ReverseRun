@@ -9,7 +9,7 @@ public class ScoreCounter : MonoBehaviour {
     float score;
     public Text scoretext;
     int k;
-    int j = 0;
+    int j;
 
 
     private InputManager inputManager;
@@ -37,27 +37,19 @@ public class ScoreCounter : MonoBehaviour {
             }
             scoretext.enabled = true;
 
-            scoretext.text = "" + k;
+            scoretext.text = "" + scoreint;
 
         }
     }
 
-
-
-    public void StrtCor() {
-        StartCoroutine(ScoreChange());
-
-    }
-
-
     IEnumerator ScoreChange() {
 
-        yield return new WaitForSeconds(0.0001f);
+        yield return null;
 
-        scoretext.text = "" + k;
+        scoretext.text = $"{k}";
         k += 10;
         if(k <= scoreint) {
-            Invoke("StrtCor",0f);
+            StartCoroutine(ScoreChange());
         }
     }
 
