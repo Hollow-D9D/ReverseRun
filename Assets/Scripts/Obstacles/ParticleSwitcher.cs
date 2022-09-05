@@ -14,7 +14,7 @@ public class ParticleSwitcher : MonoBehaviour
     void Awake()
     {
         particle = GetComponent<ParticleSystem>();
-        particle.Stop();
+        //particle.Stop();
     }
 
     public void StartTimer()

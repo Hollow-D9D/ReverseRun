@@ -175,7 +175,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5de93e376529a6e46a41b580ef6d603c, type: 2}
+  - {fileID: 2100000, guid: f232343cc2f099f4cbcce5a611f62b68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -415,7 +415,7 @@ PrefabInstance:
     - target: {fileID: -3151966692224455790, guid: 0a7b7f59cee861e458a4f2820619c0e6, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: c22ff6e5c9f8b4657806a92e2de34fd9, type: 2}
+      objectReference: {fileID: 2100000, guid: f232343cc2f099f4cbcce5a611f62b68, type: 2}
     - target: {fileID: 919132149155446097, guid: 0a7b7f59cee861e458a4f2820619c0e6, type: 3}
       propertyPath: m_Name
       value: fail
@@ -715,7 +715,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88520e7fe76364d4db1b6d591cba8a55, type: 2}
+  - {fileID: 2100000, guid: f232343cc2f099f4cbcce5a611f62b68, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -951,7 +951,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1

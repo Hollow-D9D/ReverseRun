@@ -30,6 +30,17 @@ public class GameProgress : MonoBehaviour {
         StartCoroutine(ChangeScene());
     }
 
+    public void WinCor()
+    {
+        StartCoroutine(ScoreScene());
+    }
+
+    private IEnumerator ScoreScene()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("NextLevel");
+    }
+
     private IEnumerator ChangeScene() {
 
         yield return new WaitForSeconds(3f);

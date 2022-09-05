@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 7374052240012214966}
   - component: {fileID: 9178292537822815254}
   - component: {fileID: 8123139386092389160}
-  - component: {fileID: 4618625891426932550}
   - component: {fileID: 1659831004388477013}
+  - component: {fileID: 1999694700459569148}
   m_Layer: 8
   m_Name: GoodFood (1)
   m_TagString: Untagged
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &4618625891426932550
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659831004388477014}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1659831004388477013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,3 +99,16 @@ MonoBehaviour:
   collectableMulitiplicator: 0.1
   percentToAdd: 10
   energyToAdd: 10
+--- !u!65 &1999694700459569148
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1659831004388477014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0212708, y: 1.53, z: 1.021535}
+  m_Center: {x: -0.014297649, y: 0.56, z: 0.014428511}

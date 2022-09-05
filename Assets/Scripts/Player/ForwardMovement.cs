@@ -19,11 +19,17 @@ public class ForwardMovement : MonoBehaviour {
     void FixedUpdate() {
         if(rb.velocity.z > -10)
             rb.AddForce(Vector3.back * speed,ForceMode.VelocityChange);
-        float progress = transform.position.z / (endPos / 100) / 100;
+        float progress = transform.position.z / endPos;
         //        Debug.Log(Screen.currentResolution.height);
         if(progress > 0.88f)
             GetComponent<ThrowPlayer>().End(progress);
-        //        Debug.Log(rb.velocity.z);
+        if (rb.velocity.z > 0f)
+        {
+            GetComponent<InputManager>().touchControls.Touch.Start.Disable();
+        }
+        
+        //Debug.Log(rb.velocity.z);
+        //Debug.Log(progress);
         ChangeEnergy(-energyUsed * Time.fixedDeltaTime);
         CalculateSpeed(energyUsed * Time.fixedDeltaTime);
     }

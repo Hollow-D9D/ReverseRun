@@ -32,12 +32,13 @@ public class ScoreCounter : MonoBehaviour {
 
         if(inputManager.Gameover == 1) {
             if(j == 0) {
+                Debug.Log("hey");
                 StartCoroutine(ScoreChange());
                 j = 1;
             }
             scoretext.enabled = true;
 
-            scoretext.text = "" + scoreint;
+            scoretext.text = $"{scoreint}";
 
         }
     }

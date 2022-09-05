@@ -13,11 +13,12 @@ namespace Assets.Scripts.Obstacles {
                 other.gameObject.GetComponentInParent<ForwardMovement>()
                     .OnValueChange(energyToAdd,percentToAdd);
             ScoreMultiplicator.GetInstance().Add(this);
-            if (energyToAdd > 0)
+            /*if (energyToAdd > 0)
             {
+                Debug.Log(other.gameObject.name);
                 Transform smokeParticle = other.transform.Find("Trail");
                 smokeParticle.gameObject.GetComponent<ParticleSwitcher>().StartTimer();
-            }
+            }*/
             Destroy(gameObject);
         }
     }
