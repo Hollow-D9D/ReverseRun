@@ -50,13 +50,17 @@ namespace Assets.Scripts.Obstacles {
             if(toBall.magnitude > minDistance)
                 pointerIcon.enabled = true;
             else
+            {
+                pointerIcon.GetComponentInParent<PointerSwitcher>().enabled = false;
                 pointerIcon.enabled = false;
+            }
         }
 
         private void CheckUpPlaneRaycast() {
             if(planes[3].Raycast(ray,out float distance))
                 if(distance < minDistance)
                     minDistance = distance;
+//            Debug.Log(pointerIcon.name + " : " + distance);
         }
 
     }

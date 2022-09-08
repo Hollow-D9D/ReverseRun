@@ -60,6 +60,7 @@ namespace Assets.Scripts.Obstacles {
         private void InitBall() {
             GameObject ballPrefab = Instantiate(addObs,GetRandomPosition(),Quaternion.identity);
             GameObject pointerIconPrefab = Instantiate(pointerIcon,pointersCanvas.transform);
+            pointerIcon.GetComponent<PointerSwitcher>().ball = ballPrefab.transform;
             pointersList.Add(pointerIconPrefab);
             ballsList.Add(ballPrefab);
 

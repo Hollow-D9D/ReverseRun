@@ -48,7 +48,7 @@ public class ScoreCounter : MonoBehaviour {
         yield return null;
 
         scoretext.text = $"{k}";
-        k += 10;
+        k += 25;
         if(k <= scoreint) {
             StartCoroutine(ScoreChange());
         }
