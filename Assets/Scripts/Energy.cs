@@ -32,7 +32,7 @@ namespace Assets.Scripts.Obstacles {
         }
 
         private void SetPointerPosition() =>
-            energyBarPointer.fillAmount = energy / 1.5f;
+            energyBarPointer.fillAmount = energy;
 
         private float CalculateYValye() => 
             Mathf.Clamp(energy * 100,minPointerYValue,maxPointerYValue);

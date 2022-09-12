@@ -17,7 +17,6 @@ public class ReloadScript : MonoBehaviour
     // Update is called once per frame
     public void Reload()
     {
-        Debug.Log("Bulki");
         Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }

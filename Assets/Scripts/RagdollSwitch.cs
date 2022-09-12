@@ -22,6 +22,6 @@ public class RagdollSwitch : MonoBehaviour
     {
         model.SetActive(false);
         ragDoll.SetActive(true);
-        ragDoll.transform.position = model.transform.position;
+        ragDoll.transform.position = model.transform.position - new Vector3(0f, 1.8f, 0f);
     }
 }
