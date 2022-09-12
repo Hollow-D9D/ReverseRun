@@ -12,7 +12,6 @@ namespace Assets.Scripts.Obstacles {
         private void Start()
         {
             screenEffect = FindObjectOfType<ScreenEffect>();
-            Debug.Log(screenEffect);
         }
 
         private void OnTriggerEnter(Collider other) {

@@ -33,23 +33,21 @@ public class ThrowPlayer : MonoBehaviour
         rb.AddForce(Vector3.forward * progress * backForce, ForceMode.Impulse);
         if (progress >= 0.15f)
         {
+            Debug.Log("Bulki");
             inputManager.Gameover = 1;
             rb.AddForce(Vector3.up * progress * upForce, ForceMode.Impulse);
             gameProgress.WinCor();
         }
         else
             gameProgress.FailCor();
-        Debug.Log(inputManager.Gameover);
         //inputManager.touchControls.Disable();
         
     }
 
     public void End(float progress) {
+        HidePointersAndRelease();
         fm.enabled = false;
         rgSwitch.Switch();
-
-        HidePointersAndRelease();
-        
         if(progress < .88f) {
             Throw(progress);
         } else {
@@ -58,6 +56,8 @@ public class ThrowPlayer : MonoBehaviour
             gameProgress.FailCor();
             Debug.Log("Merar");
         }
+
+        
         Destroy(GetComponent<PlayerController>());
         Destroy(this);
     }

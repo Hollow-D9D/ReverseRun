@@ -9,17 +9,12 @@ public class Winscore : MonoBehaviour
     public Text score;
     public int points;
     // Start is called before the first frame update
-    void Start()
-    { points = ScoreCounter.scoreint;
-      score.text = "" + points;
-        StartCoroutine(reloadScene());
-    }
-
-    
-
-    IEnumerator reloadScene()
-    {
-        yield return new WaitForSeconds(7f);
+    IEnumerator Start()
+    { 
+        points = ScoreCounter.scoreint;
+        score.text = "" + points;
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("MainLevel");
     }
+
 }

@@ -9,7 +9,6 @@ public class ReloadScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(sceneName);
     }
 
     public void setName(string name) { sceneName = name; }

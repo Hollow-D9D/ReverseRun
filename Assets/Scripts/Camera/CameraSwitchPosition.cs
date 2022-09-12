@@ -22,8 +22,8 @@ public class CameraSwitchPosition : MonoBehaviour
         
         IEnumerator smoothTransition()
         {
-            Time.timeScale = 0.00001f;
-            yield return new WaitForSeconds(0.00001f);
+            Time.timeScale = 0.001f;
+            yield return new WaitForSeconds(0.001f);
             Time.timeScale = 1f;
         }
 

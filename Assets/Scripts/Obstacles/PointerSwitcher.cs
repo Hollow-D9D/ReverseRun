@@ -14,8 +14,8 @@ public class PointerSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Active = transform.Find("Active").GetComponent<Image>();
-        Passive = transform.Find("Image").GetComponent<Image>();
+        Active = transform.GetChild(0).Find("Active").GetComponent<Image>();
+        Passive = transform.GetChild(0).Find("Image").GetComponent<Image>();
 
         startedCoroutine = false;
         Player = GameObject.Find("Player").transform;

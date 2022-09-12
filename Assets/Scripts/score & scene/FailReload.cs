@@ -4,21 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class FailReload : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        StartCoroutine(reloadScene());
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    IEnumerator reloadScene()
-    {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MainLevel");
     }
 }

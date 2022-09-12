@@ -35,6 +35,7 @@ public class RopeMaker : MonoBehaviour
             lineDrawer.points.Add(currentTransform);
         }
         player.gameObject.AddComponent<FixedJoint>().connectedBody = currentRb;
+//        player.gameObject.GetComponent<FixedJoint>().massScale = 0;
     }
 
     // Update is called once per frame

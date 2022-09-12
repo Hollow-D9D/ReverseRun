@@ -25,14 +25,14 @@ public class ScoreCounter : MonoBehaviour {
     }
 
     void Update() {
-        score = inputManager.progress * 10000 * ScoreMultiplicator.GetInstance().GetMultiplicator();
-        scoreint = Mathf.RoundToInt(score);
         //Debug.Log(score);  
 
 
         if(inputManager.Gameover == 1) {
+
             if(j == 0) {
-                Debug.Log("hey");
+                score = inputManager.getProgress() * 10000 * ScoreMultiplicator.GetInstance().GetMultiplicator();
+                scoreint = Mathf.RoundToInt(score);
                 StartCoroutine(ScoreChange());
                 j = 1;
             }
@@ -46,7 +46,6 @@ public class ScoreCounter : MonoBehaviour {
     IEnumerator ScoreChange() {
 
         yield return null;
-
         scoretext.text = $"{k}";
         k += 25;
         if(k <= scoreint) {

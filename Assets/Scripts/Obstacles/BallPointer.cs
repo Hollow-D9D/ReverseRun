@@ -48,11 +48,11 @@ namespace Assets.Scripts.Obstacles {
 
         private void SetVisabilityOfPointer() {
             if(toBall.magnitude > minDistance)
-                pointerIcon.enabled = true;
+                pointerIcon.transform.parent.gameObject.SetActive(true);
             else
             {
                 pointerIcon.GetComponentInParent<PointerSwitcher>().enabled = false;
-                pointerIcon.enabled = false;
+                pointerIcon.transform.parent.gameObject.SetActive(false);
             }
         }
 

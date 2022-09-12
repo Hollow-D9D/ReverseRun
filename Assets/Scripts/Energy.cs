@@ -27,14 +27,13 @@ namespace Assets.Scripts.Obstacles {
 
         public void SetEnergy(float energyValue) {
             energy += energyValue;
-
             SetPointerPosition();
         }
 
-        private void SetPointerPosition() =>
-            energyBarPointer.fillAmount = energy;
+        private void SetPointerPosition()
+        {
+            energyBarPointer.fillAmount = energy - 0.5f;
+        }
 
-        private float CalculateYValye() => 
-            Mathf.Clamp(energy * 100,minPointerYValue,maxPointerYValue);
     }
 }

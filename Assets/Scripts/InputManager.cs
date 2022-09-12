@@ -67,12 +67,18 @@ public class InputManager : MonoBehaviour {
     }
 
     public void GameOver(InputAction.CallbackContext ctx) {
+        GameOver();
+    }
+
+    public float getProgress() => transform.position.z / endPos;
+
+    public void GameOver()
+    {
         progress = transform.position.z / endPos; // -80  -240 
-        
+
         GetComponent<ThrowPlayer>()?.End(progress);
         //touchControls.Disable();
         touchControls.UI.Enable();
         touchControls.Touch.Disable();
     }
-
 }
