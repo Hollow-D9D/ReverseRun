@@ -25,7 +25,7 @@ public class ForwardMovement : MonoBehaviour {
             GetComponent<ThrowPlayer>().End(progress);
         if (rb.velocity.z > 0f)
         {
-            GetComponent<InputManager>().touchControls.Touch.Start.Disable();
+            GetComponent<InputManager>().touchControls.Touch.Disable();
         }
         
         //Debug.Log(rb.velocity.z);

@@ -28,7 +28,7 @@ public class PointerSwitcher : MonoBehaviour
         if (ball != null && !startedCoroutine)
         {
             distance = Vector3.Distance(ball.transform.position, Player.position);
-            Debug.Log(distance);
+//            Debug.Log(distance);
             StartCoroutine(switchSprite(distance));
         }
         

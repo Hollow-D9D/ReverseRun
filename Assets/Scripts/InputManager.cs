@@ -70,7 +70,9 @@ public class InputManager : MonoBehaviour {
         progress = transform.position.z / endPos; // -80  -240 
         
         GetComponent<ThrowPlayer>()?.End(progress);
-        touchControls.Disable();
+        //touchControls.Disable();
+        touchControls.UI.Enable();
+        touchControls.Touch.Disable();
     }
 
 }

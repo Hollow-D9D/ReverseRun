@@ -6,7 +6,7 @@ public class GameProgress : MonoBehaviour {
 
     public ReleaseWarning releaseText;
     [SerializeField] private float ReleaseTextStartValue = 0.75f;
-
+    [SerializeField] private ReloadScript reload;
     [SerializeField] private RopeColorController ropeColorController;
 
     [SerializeField] private Transform Player;
@@ -37,12 +37,15 @@ public class GameProgress : MonoBehaviour {
 
     private IEnumerator ScoreScene()
     {
+        reload.gameObject.SetActive(true);
+        reload.setName("NextLevel");
         yield return new WaitForSeconds(10f);
         SceneManager.LoadScene("NextLevel");
     }
 
     private IEnumerator ChangeScene() {
-
+        reload.gameObject.SetActive(true);
+        reload.setName("FailScene");
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("FailScene");
     }
