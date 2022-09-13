@@ -8,7 +8,8 @@ public class RopeMaker : MonoBehaviour
     [SerializeField] private GameObject nodePrefab;
     [SerializeField] private Vector3 transformOffset;
     [SerializeField] private Transform player;
-    
+    [SerializeField] private InputManager inputManager;
+
     private Rigidbody currentRb;
     private Transform currentTransform;
     private DrawLine lineDrawer;
@@ -30,6 +31,11 @@ public class RopeMaker : MonoBehaviour
         {
             currentTransform = Instantiate(nodePrefab, currentTransform.position + transformOffset, currentTransform.rotation).transform;
             currentTransform.GetComponent<ConfigurableJoint>().connectedBody = currentRb;
+
+            RopeStretchEffect rse = currentTransform.GetComponent<RopeStretchEffect>();
+            rse.inputManager = inputManager;
+            rse.startPoint = transform;
+
             currentRb = currentTransform.GetComponent<Rigidbody>();
             //Debug.Log(currentTransform.position);
             lineDrawer.points.Add(currentTransform);

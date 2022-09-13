@@ -721,7 +721,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5de93e376529a6e46a41b580ef6d603c, type: 2}
+  - {fileID: 2100000, guid: 914c50088a4e8234db4a5224916d73dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -800,7 +800,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 2
+    m_Type: 0
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -993,7 +993,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 88520e7fe76364d4db1b6d591cba8a55, type: 2}
+  - {fileID: 2100000, guid: 914c50088a4e8234db4a5224916d73dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1062,7 +1062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.3376694
+      value: -8.72
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1070,7 +1070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -28.6
+      value: -28.27
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1103,7 +1103,7 @@ PrefabInstance:
     - target: {fileID: -3151966692224455790, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 2100000, guid: c22ff6e5c9f8b4657806a92e2de34fd9, type: 2}
+      objectReference: {fileID: 2100000, guid: 914c50088a4e8234db4a5224916d73dc, type: 2}
     - target: {fileID: 919132149155446097, guid: d36359a3db663474cb9f9167a62f249a, type: 3}
       propertyPath: m_Name
       value: Victory (1)
