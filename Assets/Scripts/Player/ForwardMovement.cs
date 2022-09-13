@@ -2,7 +2,8 @@ using Assets.Scripts.Obstacles;
 using UnityEngine;
 using System.Collections;
 
-public class ForwardMovement : MonoBehaviour {
+public class ForwardMovement : MonoBehaviourSingleton<ForwardMovement>
+{
 
     private Rigidbody rb;
     [SerializeField] private float speed = 2f;
@@ -11,17 +12,20 @@ public class ForwardMovement : MonoBehaviour {
 
     private float endPos = -240;
 
-    private void Awake() {
+    protected override void Awake()
+    {
+        base.Awake();
         rb = GetComponent<Rigidbody>();
     }
     private void Start() => energy.ShowEnergyBar();
 
-    void FixedUpdate() {
-        if(rb.velocity.z > -10)
-            rb.AddForce(Vector3.back * speed,ForceMode.VelocityChange);
+    void FixedUpdate()
+    {
+        if (rb.velocity.z > -10)
+            rb.AddForce(Vector3.back * speed, ForceMode.VelocityChange);
         float progress = transform.position.z / endPos;
         //        Debug.Log(Screen.currentResolution.height);
-        if(progress > 0.88f)
+        if (progress > 0.88f)
             GetComponent<ThrowPlayer>().End(progress);
         if (rb.velocity.z > 0f)
         {
@@ -34,7 +38,8 @@ public class ForwardMovement : MonoBehaviour {
     }
 
 
-    public void OnValueChange(float energyPercentToAdd,float speedPercentToAdd) {
+    public void OnValueChange(float energyPercentToAdd, float speedPercentToAdd)
+    {
         ChangeEnergy(energyPercentToAdd);
         ChangeSpeed(speedPercentToAdd);
     }
@@ -45,7 +50,8 @@ public class ForwardMovement : MonoBehaviour {
     private void ChangeSpeed(float speedPercentToAdd) =>
         speed += speed / 100 * speedPercentToAdd * energy.GetEnergy();
 
-    private void CalculateSpeed(float discountedEnergy) {
+    private void CalculateSpeed(float discountedEnergy)
+    {
         speed -= speed / 100 * discountedEnergy;
     }
 

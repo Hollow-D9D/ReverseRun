@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Assets.Scripts.Obstacles;
 
-public class ThrowPlayer : MonoBehaviour
+public class ThrowPlayer : MonoBehaviourSingleton<ThrowPlayer>
 {
     [SerializeField] private AdditionalObstacleManager addObsManager;
     [SerializeField] private float upForce, backForce;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameProgress gameProgress;
+    [SerializeField] private GameObject screenEffect;
 
     private InputManager inputManager;
     private ForwardMovement fm;
@@ -19,8 +20,9 @@ public class ThrowPlayer : MonoBehaviour
         return fm.enabled;
     }
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         rgSwitch = GetComponent<RagdollSwitch>();
         fm = GetComponent<ForwardMovement>();
         inputManager = GetComponent<InputManager>();
@@ -46,6 +48,7 @@ public class ThrowPlayer : MonoBehaviour
 
     public void End(float progress) {
         HidePointersAndRelease();
+        screenEffect.SetActive(false);
         fm.enabled = false;
         rgSwitch.Switch();
         if(progress < .88f) {

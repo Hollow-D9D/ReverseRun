@@ -7,6 +7,7 @@ namespace Assets.Scripts.Obstacles {
 
         [SerializeField] protected float percentToAdd;
         [SerializeField] protected float energyToAdd;
+
         private ScreenEffect screenEffect;
 
         private void Start()
@@ -15,9 +16,10 @@ namespace Assets.Scripts.Obstacles {
         }
 
         private void OnTriggerEnter(Collider other) {
-            ForwardMovement exo = other.gameObject.GetComponentInParent<ForwardMovement>();
-            if(exo != null)
-                exo.OnValueChange(energyToAdd,percentToAdd);
+            if (other.gameObject.layer != 10)
+                return;
+            if(ForwardMovement.Instance != null)
+                ForwardMovement.Instance.OnValueChange(energyToAdd,percentToAdd);
             ScoreMultiplicator.GetInstance().Add(this);
             if (energyToAdd > 0)
                 screenEffect.AddEffect(Color.green);
