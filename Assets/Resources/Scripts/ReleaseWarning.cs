@@ -7,6 +7,7 @@ public class ReleaseWarning : MonoBehaviour {
     [SerializeField] private int hideAndShowCount = 6;
     [Range(0,1), SerializeField] private float hideAndShowInterval;
     [SerializeField]private TextMeshProUGUI text;
+
     private void Start() {
         text = GetComponent<TextMeshProUGUI>();
         text.enabled = false;
@@ -20,6 +21,7 @@ public class ReleaseWarning : MonoBehaviour {
             yield return new WaitForSeconds(hideAndShowInterval);
         }
     }
+
     public void ShowText(bool show) {
         text.enabled = show;
     }

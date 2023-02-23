@@ -12,7 +12,6 @@ public class RopeColorChange : MonoBehaviour
     [SerializeField] Color color4;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         color.color = Color.gray;
@@ -29,8 +28,4 @@ public class RopeColorChange : MonoBehaviour
         });
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
 }

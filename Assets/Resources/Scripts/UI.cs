@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class UI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void showMenu(bool isWin)
     {
         if (isWin)
@@ -17,11 +11,5 @@ public class UI : MonoBehaviour
         //show text
         //show score
         //show menu
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

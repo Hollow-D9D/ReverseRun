@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private InputManager inputManager;
     private Rigidbody rb;
     private float screenWidth;
-    private Transform playerTransform;
     [SerializeField] private float leftEdge = -18.5f;
     [SerializeField] private float rightEdge = -8.5f;
 
@@ -18,12 +16,18 @@ public class PlayerController : MonoBehaviour
         screenWidth = Screen.width;
         rb = GetComponent<Rigidbody>();
         inputManager = GetComponent<InputManager>();
-        playerTransform = GetComponent<Transform>();
     }
 
     private void OnEnable()
     {
-        inputManager.OnMove += Move;
+        inputManager.onTouchStart += Move;
+        inputManager.onTouchRelease.AddListener(FinishRun);
+    }
+
+    private void OnDisable()
+    {
+        inputManager.onTouchStart -= Move;
+        inputManager.onTouchRelease.RemoveListener(FinishRun);
     }
 
     private void Move(Vector2 pos)
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour
 
     float getDirRange()
     {
-        return Mathf.Clamp((inputManager.getTouchX() / screenWidth) * (rightEdge - leftEdge) + leftEdge,leftEdge, rightEdge);
+        return Mathf.Clamp((Input.mousePosition.x / screenWidth) * (rightEdge - leftEdge) + leftEdge,leftEdge, rightEdge);
     }
 
     private IEnumerator movementRoutine()
@@ -45,5 +49,10 @@ public class PlayerController : MonoBehaviour
             rb.MovePosition(newPosition);
             yield return null;
         }
+    }
+
+    private void FinishRun()
+    {
+        ForwardMovement.Instance.enabled = false;
     }
 }
