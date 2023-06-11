@@ -21,7 +21,7 @@ namespace Assets.Scripts.Obstacles {
             Debug.Log("lalalala");
             if (throwPlayer.IsForwardMovementEnabled())
             {
-                throwPlayer.End(1f);
+                InputManager.Instance.EndGame(1f);
                 Destroy(gameObject);
             }
         }

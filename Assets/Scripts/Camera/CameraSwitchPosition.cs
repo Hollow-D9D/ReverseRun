@@ -17,7 +17,7 @@ public class CameraSwitchPosition : MonoBehaviour
         {
             brainCam = GetComponent<CinemachineBrain>();
             winCam.Priority = 25;
-            StartCoroutine(smoothTransition());            
+            //StartCoroutine(smoothTransition());            
         }
         
         IEnumerator smoothTransition()

@@ -28,6 +28,7 @@ public class IntroPart : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         canvas.enabled = true;
         inputManager.touchControls.Enable();
+        inputManager.startButton.enabled = true;
     }
     // Update is called once per frame
     void Update() {

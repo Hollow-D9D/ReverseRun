@@ -4,37 +4,46 @@ using System.Collections;
 
 public class ForwardMovement : MonoBehaviourSingleton<ForwardMovement>
 {
-
+    private bool checkLose;
     private Rigidbody rb;
     [SerializeField] private float speed = 2f;
     [SerializeField] private Energy energy;
     [SerializeField] private float energyUsed;
-
-    private float endPos = -240;
+    private float maxSpeed;
+    private float endPos;
 
     protected override void Awake()
     {
         base.Awake();
+        checkLose = false;
         rb = GetComponent<Rigidbody>();
+        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
     }
-    private void Start() => energy.ShowEnergyBar();
+    
+    private void Start()
+    {
+        maxSpeed = speed;
+        energy.ShowEnergyBar();
+        endPos = LocalDB.Instance.db.data.ropeValue;
+        rb.AddForce(Vector3.back * speed, ForceMode.Impulse);
+    }
 
     void FixedUpdate()
     {
-        if (rb.velocity.z > -10)
-            rb.AddForce(Vector3.back * speed, ForceMode.VelocityChange);
+       // Debug.Log($"Speed: {speed} Energy: {energy.GetEnergy()} EndPos: {endPos} " +
+        //    $"Velocity {rb.velocity.z}");
         float progress = transform.position.z / endPos;
-        //        Debug.Log(Screen.currentResolution.height);
-        if (progress > 0.88f)
-            GetComponent<ThrowPlayer>().End(progress);
-        if (rb.velocity.z > 0f)
+        if (progress > .2)
+            checkLose = true;
+        if (checkLose && rb.velocity.z > -6f ||
+            progress > 0.88f ||
+            rb.velocity.z > 0f)
         {
-            GetComponent<ThrowPlayer>().End(progress);
+            InputManager.Instance.EndGame(progress);
         }
-        //Debug.Log(rb.velocity.z);
-        //Debug.Log(progress);
         ChangeEnergy(-energyUsed * Time.fixedDeltaTime);
-        CalculateSpeed(energyUsed * Time.fixedDeltaTime);
+        ChangeSpeed(-energyUsed * Time.fixedDeltaTime);
+        rb.velocity = new Vector3(0, 0, -speed);
     }
 
 
@@ -48,11 +57,5 @@ public class ForwardMovement : MonoBehaviourSingleton<ForwardMovement>
         energy.SetEnergy(energy.GetEnergy() / 100 * energyPercentToAdd);
 
     private void ChangeSpeed(float speedPercentToAdd) =>
-        speed += speed / 100 * speedPercentToAdd * energy.GetEnergy();
-
-    private void CalculateSpeed(float discountedEnergy)
-    {
-        speed -= speed / 100 * discountedEnergy;
-    }
-
+        speed = maxSpeed * energy.GetEnergy();
 }

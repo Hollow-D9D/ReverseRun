@@ -21,7 +21,7 @@ public class DrawLine : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
+	void LateUpdate()
 	{
 		int i = 0;
 		lineRenderer.positionCount = points.Count;

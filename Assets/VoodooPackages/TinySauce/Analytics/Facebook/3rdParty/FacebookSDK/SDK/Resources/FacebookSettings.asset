@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectedAppIndex: 0
   clientTokens:
-  - 
+  - 19b3ec60ce332c2e7c45adb14a6a29de
   appIds:
-  - 0
+  - 822185542303530
   appLabels:
-  - App Name
+  - Sling Jump
   cookie: 1
   logging: 1
   status: 1

@@ -2,12 +2,12 @@ using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class ScoreCounter : MonoBehaviour {
     public static int scoreint;
     float score;
-    public Text scoretext;
+    public TextMeshProUGUI scoretext;
     int k;
     int j;
 
@@ -31,8 +31,10 @@ public class ScoreCounter : MonoBehaviour {
         if(inputManager.Gameover == 1) {
 
             if(j == 0) {
-                score = inputManager.getProgress() * 10000 * ScoreMultiplicator.GetInstance().GetMultiplicator();
+                score = inputManager.getTransformValue() * 10 * ScoreMultiplicator.GetInstance().GetMultiplicator();
                 scoreint = Mathf.RoundToInt(score);
+                LocalDB.Instance.db.data.money += scoreint;
+
                 StartCoroutine(ScoreChange());
                 j = 1;
             }

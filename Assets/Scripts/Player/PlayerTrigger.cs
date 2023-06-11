@@ -12,8 +12,8 @@ namespace Assets.Scripts.Player
             if (other.gameObject.GetComponent<AdditionalObstacle>())
             {
                 gameObject.SetActive(false);
-                if (ThrowPlayer.Instance != null)
-                    ThrowPlayer.Instance.End(1f);
+                if (InputManager.Instance != null)
+                    InputManager.Instance.EndGame(1f);
             }
         }
     }

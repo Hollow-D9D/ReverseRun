@@ -7,18 +7,6 @@ public class RagdollSwitch : MonoBehaviour
     public GameObject ragDoll;
     [SerializeField] private GameObject model;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void Switch()
     {
         model.SetActive(false);

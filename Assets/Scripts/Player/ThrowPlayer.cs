@@ -6,7 +6,7 @@ using Assets.Scripts.Obstacles;
 public class ThrowPlayer : MonoBehaviourSingleton<ThrowPlayer>
 {
     [SerializeField] private AdditionalObstacleManager addObsManager;
-    [SerializeField] private float upForce, backForce;
+    private float upForce, backForce;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private GameProgress gameProgress;
     [SerializeField] private GameObject screenEffect;
@@ -27,7 +27,15 @@ public class ThrowPlayer : MonoBehaviourSingleton<ThrowPlayer>
         fm = GetComponent<ForwardMovement>();
         inputManager = GetComponent<InputManager>();
     }
- 
+
+    private void Start()
+    {
+        upForce = 1000f;
+        InputManager.Instance.OnGameStart += UpdateData;
+    }
+
+    private void OnDestroy() => InputManager.Instance.OnGameStart -= UpdateData;
+    private void UpdateData() => backForce = LocalDB.Instance.db.data.launchForceValue;
     private void Throw(float progress)
     {
         inputManager.Gameover = 2;

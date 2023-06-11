@@ -9,8 +9,7 @@ public class ScreenEffect : MonoBehaviour
     float currentMaxOp;
     float changeTime;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         changeTime = .5f;
         currentMaxOp = .4f;
@@ -25,9 +24,4 @@ public class ScreenEffect : MonoBehaviour
         image.DOFade(currentMaxOp, changeTime).OnComplete(() => image.DOFade(0f, changeTime).SetEase(Ease.InCirc));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -1,20 +1,22 @@
 using Assets.Scripts.Obstacles;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
-public class InputManager : MonoBehaviour {
-
-    [SerializeField] private ThrowPlayer tp;
+public class InputManager : MonoBehaviourSingleton<InputManager> {
     [SerializeField] private GameObject granny;
     [SerializeField] private GameObject image;
+    [SerializeField] private GameObject UpgradePanel;
+
+    public CustomButton startButton;
+    public Action startAction;
+    public event Action OnGameStart;
     private Animator anim;
 
 
-    private float endPos = -240;
+    private float endPos;
     public PlayerControls touchControls;
     private ForwardMovement fm;
-    private Camera camera;
-    private Rigidbody rb;
     public float progress;
     public int Gameover = 0;
 
@@ -22,17 +24,13 @@ public class InputManager : MonoBehaviour {
 
     public event StartMove OnMove;
 
-    private void Awake() {
+    private void Awake()
+    {
+        base.Awake();
         anim = granny.GetComponent<Animator>();
         touchControls = new PlayerControls();
-        camera = Camera.main;
     }
 
-    /*private void Update()
-    { 
-      runprogress = transform.position.z / endPos;
-
-    }*/
     private void OnEnable() {
         touchControls.Enable();
     }
@@ -42,43 +40,44 @@ public class InputManager : MonoBehaviour {
     }
 
     private void Start() {
-        touchControls.Touch.Start.started += ctx => GameStart(ctx);
-        touchControls.Touch.Start.canceled += ctx => GameOver(ctx);
-        rb = GetComponent<Rigidbody>();
+        startButton.enabled = false;
+        startAction = GameStart;
+        startButton.Action = startAction;
+
         fm = GetComponent<ForwardMovement>();
-
     }
-    public void GameStart(InputAction.CallbackContext ctx) {
+    public void GameStart() {
+        
         fm.enabled = true;
-
+        endPos = LocalDB.Instance.db.data.ropeValue;
+        OnGameStart.Invoke();
+        touchControls.Touch.Start.canceled += GameOver;
         Destroy(image);
         granny.transform.eulerAngles = new Vector3(0, 180, 0);
-        rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotation;
         anim.SetBool("isStarted", true);
+        UpgradePanel.SetActive(false);
         //Debug.Log("GAME START"); 
-        if(OnMove != null) OnMove(primaryPosition());
+        if (OnMove != null) OnMove(primaryPosition());
     }
 
     public float getTouchX() {
         return touchControls.Touch.Move.ReadValue<Vector2>().x;
     }
     public Vector3 primaryPosition() {
-        return Utils.ScreenToWorld(camera,touchControls.Touch.Move.ReadValue<Vector2>());
+        return Utils.ScreenToWorld(Camera.main,touchControls.Touch.Move.ReadValue<Vector2>());
     }
 
     public void GameOver(InputAction.CallbackContext ctx) {
-        GameOver();
+        EndGame(getProgress());
+    }
+
+    public void EndGame(float progress)
+    {
+        touchControls.Touch.Start.canceled -= GameOver;
+        ThrowPlayer.Instance.End(progress);
+
     }
 
     public float getProgress() => transform.position.z / endPos;
-
-    public void GameOver()
-    {
-        progress = transform.position.z / endPos; // -80  -240 
-
-        GetComponent<ThrowPlayer>()?.End(progress);
-        //touchControls.Disable();
-        touchControls.UI.Enable();
-        touchControls.Touch.Disable();
-    }
+    public float getTransformValue() => -transform.position.z;
 }

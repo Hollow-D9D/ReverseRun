@@ -10,14 +10,20 @@ public class GameProgress : MonoBehaviour {
     [SerializeField] private RopeColorController ropeColorController;
 
     [SerializeField] private Transform Player;
-
-    private float endPos = -240;
+    private float endPos;
     private float progress;
 
     private bool showIcon = false;
 
+
+    private void Start() => InputManager.Instance.OnGameStart += UpdateData;
+
+    private void OnDestroy() => InputManager.Instance.OnGameStart -= UpdateData;
+    private void UpdateData() => endPos = LocalDB.Instance.db.data.ropeValue;
+    
+    
     private void FixedUpdate() {
-        progress = (Player.transform.position.z) / (endPos / 100) / 100;
+        progress = Player.transform.position.z / endPos;
 
         ropeColorController.ChangeColor(progress);
 

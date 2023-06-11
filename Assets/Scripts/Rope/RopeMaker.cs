@@ -10,7 +10,6 @@ public class RopeMaker : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private InputManager inputManager;
 
-    private Rigidbody currentRb;
     private Transform currentTransform;
     private DrawLine lineDrawer;
 
@@ -19,9 +18,9 @@ public class RopeMaker : MonoBehaviour
     {
         transform.position = player.position - (transformOffset * ropeCount);
         currentTransform = transform;
-        currentRb = GetComponent<Rigidbody>();
         lineDrawer = GetComponent<DrawLine>();
         CreateRope();
+        Destroy(this);
     }
 
     void CreateRope()
@@ -30,18 +29,14 @@ public class RopeMaker : MonoBehaviour
         for (int i = 0; i < ropeCount; ++i)
         {
             currentTransform = Instantiate(nodePrefab, currentTransform.position + transformOffset, currentTransform.rotation).transform;
-            currentTransform.GetComponent<ConfigurableJoint>().connectedBody = currentRb;
+            currentTransform.SetParent(player.transform);
 
             RopeStretchEffect rse = currentTransform.GetComponent<RopeStretchEffect>();
             rse.inputManager = inputManager;
             rse.startPoint = transform;
 
-            currentRb = currentTransform.GetComponent<Rigidbody>();
-            //Debug.Log(currentTransform.position);
             lineDrawer.points.Add(currentTransform);
         }
-        player.gameObject.AddComponent<FixedJoint>().connectedBody = currentRb;
-//        player.gameObject.GetComponent<FixedJoint>().massScale = 0;
     }
 
     // Update is called once per frame
