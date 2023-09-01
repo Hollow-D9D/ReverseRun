@@ -38,8 +38,8 @@ public class ScoreCounter : MonoBehaviour {
                 StartCoroutine(ScoreChange());
                 j = 1;
             }
-            scoretext.enabled = true;
 
+            scoretext.enabled = true;
             scoretext.text = $"{scoreint}";
 
         }
@@ -49,7 +49,9 @@ public class ScoreCounter : MonoBehaviour {
 
         yield return null;
         scoretext.text = $"{k}";
-        k += 25;
+//        Debug.Log(k /scoreint);
+        scoretext.fontSize = 40 + 100 * ((float)k / (float)scoreint);
+        k += 2;
         if(k <= scoreint) {
             StartCoroutine(ScoreChange());
         }

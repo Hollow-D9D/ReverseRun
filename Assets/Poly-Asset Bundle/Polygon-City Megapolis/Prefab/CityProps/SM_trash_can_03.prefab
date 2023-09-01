@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3223693196652093343}
   - component: {fileID: 1950903564704780346}
   - component: {fileID: 4393251804085052656}
-  - component: {fileID: 438377056925007307}
+  - component: {fileID: 1070860226028560479}
   m_Layer: 0
   m_Name: SM_trash_can_03
   m_TagString: Untagged
@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +83,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &438377056925007307
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &1070860226028560479
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +94,7 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1517035220887626335, guid: e4136e4905dc80342837b5022ed9c5f3, type: 3}
+  m_Radius: 0.27897936
+  m_Height: 0.90161395
+  m_Direction: 1
+  m_Center: {x: -0.00009764733, y: 0.45080706, z: -0.00009892883}

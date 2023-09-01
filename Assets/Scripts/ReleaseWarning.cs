@@ -11,7 +11,7 @@ public class ReleaseWarning : MonoBehaviour {
         text = GetComponent<TextMeshProUGUI>();
         text.enabled = false;
     }
-
+    /*
     public IEnumerator Show() {
         for(int i = 0;i < hideAndShowCount;i++) {
             ShowText(true);
@@ -19,6 +19,12 @@ public class ReleaseWarning : MonoBehaviour {
             ShowText(false);
             yield return new WaitForSeconds(hideAndShowInterval);
         }
+    }*/
+
+    public void Show()
+    {
+        text.enabled = true;
+
     }
     public void ShowText(bool show) {
         text.enabled = show;

@@ -12,7 +12,7 @@ public class ScreenEffect : MonoBehaviour
     private void Start()
     {
         changeTime = .5f;
-        currentMaxOp = .4f;
+        currentMaxOp = .8f;
         image = GetComponent<Image>();
 //        currentMaxOp = 0;
     }

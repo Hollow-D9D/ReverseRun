@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 2596862836102186821}
   - component: {fileID: 1415875658286352608}
   - component: {fileID: 3765787885259144234}
-  - component: {fileID: -4383699797875103158}
+  - component: {fileID: 8787709414430681669}
+  - component: {fileID: 2141303905254668527}
   m_Layer: 0
   m_Name: SM_small_tree_01
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,10 +54,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,8 +84,9 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &-4383699797875103158
-MeshCollider:
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8787709414430681669
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -90,7 +95,19 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -6146254484359491510, guid: 30a92a08a2dca4447beb8c94278b3d78, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.45570374, y: 1.8101997, z: 0.45847118}
+  m_Center: {x: -0.0019607963, y: 1.750723, z: -0.0056997393}
+--- !u!65 &2141303905254668527
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405346188905979391}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14322405, y: 0.78875995, z: 0.13641363}
+  m_Center: {x: 0.00029248785, y: 0.39437997, z: 0.0066191964}

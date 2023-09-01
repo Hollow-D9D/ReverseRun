@@ -29,7 +29,8 @@ public class GameProgress : MonoBehaviour {
 
         if(progress >= ReleaseTextStartValue && showIcon == false) {
             showIcon = true;
-            StartCoroutine(releaseText.Show());
+            //StartCoroutine(releaseText.Show());
+            releaseText.Show();
         }
     }
     public void FailCor() {

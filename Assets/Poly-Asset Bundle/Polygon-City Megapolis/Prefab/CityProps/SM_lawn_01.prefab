@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5902356003865662192}
   - component: {fileID: 8506621068157281850}
   - component: {fileID: 4221018024137808915}
-  - component: {fileID: 2328589893281661486}
   m_Layer: 0
   m_Name: SM_lawn_01
   m_TagString: Untagged
@@ -30,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,10 +53,12 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4221018024137808915
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,17 +97,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.03, z: 1.9999998}
   m_Center: {x: 0, y: 0.013413734, z: -0.0033956468}
---- !u!64 &2328589893281661486
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7858054274762262511}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6844153019375481881, guid: 068378e6cded21c43b50a50ed367f27d, type: 3}

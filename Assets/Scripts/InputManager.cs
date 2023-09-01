@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviourSingleton<InputManager> {
     }
 
     private void Start() {
-        startButton.enabled = false;
+       // startButton.enabled = false;
         startAction = GameStart;
         startButton.Action = startAction;
 

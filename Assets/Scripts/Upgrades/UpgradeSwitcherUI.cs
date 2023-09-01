@@ -29,7 +29,7 @@ public class UpgradeSwitcherUI : MonoBehaviour
 
     private void Start()
     {
-        ColorUtility.TryParseHtmlString("#78E08FC7", out button1Color);
+        ColorUtility.TryParseHtmlString("#299A42C7", out button1Color);
         ColorUtility.TryParseHtmlString("#E55039C7", out button2Color);
         ColorUtility.TryParseHtmlString("#60A3BCC7", out button3Color);
         ColorUtility.TryParseHtmlString("#F6B93BC7", out button4Color);
@@ -44,8 +44,8 @@ public class UpgradeSwitcherUI : MonoBehaviour
         ActionButtonColor.color = button1Color;
         upgradeMode = UpgradeMode.RopeLength;
         
-        captionText.color = button1Color;
-        descriptionText.color = button1Color;
+        //captionText.color = button1Color;
+        //descriptionText.color = button1Color;
 
         captionString = $"Rope Length: {LocalDB.Instance.db.data.ropeLevel} ({LocalDB.Instance.db.data.ropeCost})";
         captionText.text = captionString;
@@ -58,8 +58,8 @@ public class UpgradeSwitcherUI : MonoBehaviour
         footerColor.color = button2Color;
         headerColor.color = button2Color;
 
-        captionText.color = button2Color;
-        descriptionText.color = button2Color;
+        //captionText.color = button2Color;
+        //descriptionText.color = button2Color;
 
         ActionButtonColor.color = button2Color;
         upgradeMode = UpgradeMode.EnergyIncrease;
@@ -75,8 +75,8 @@ public class UpgradeSwitcherUI : MonoBehaviour
         footerColor.color = button3Color;
         headerColor.color = button3Color;
 
-        captionText.color = button3Color;
-        descriptionText.color = button3Color;
+        //captionText.color = button3Color;
+        //descriptionText.color = button3Color;
 
 
         ActionButtonColor.color = button3Color;
@@ -93,8 +93,8 @@ public class UpgradeSwitcherUI : MonoBehaviour
         footerColor.color = button4Color;
         headerColor.color = button4Color;
 
-        captionText.color = button4Color;
-        descriptionText.color = button4Color;
+        //captionText.color = button4Color;
+        //descriptionText.color = button4Color;
 
         ActionButtonColor.color = button4Color;
         upgradeMode = UpgradeMode.LaunchForce;

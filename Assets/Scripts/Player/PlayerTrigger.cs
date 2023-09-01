@@ -5,6 +5,7 @@ namespace Assets.Scripts.Player
 {
     public class PlayerTrigger : MonoBehaviour
     {
+        [SerializeField] private GameObject ragDoll;
         private void OnTriggerEnter(Collider other)
         {
             //    other.gameObject.GetComponent<Ball>()
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Player
             if (other.gameObject.GetComponent<AdditionalObstacle>())
             {
                 gameObject.SetActive(false);
-                if (InputManager.Instance != null)
+                if (!ragDoll.activeSelf && InputManager.Instance != null)
                     InputManager.Instance.EndGame(1f);
             }
         }

@@ -9,13 +9,13 @@ public class Money : MonoBehaviour
     private TextMeshProUGUI moneyText;
 
     private void Start()
-    {
+    {//Money:
         moneyText = GetComponent<TextMeshProUGUI>();
-        moneyText.text = "Money: " + LocalDB.Instance.db.data.money;
+        moneyText.text = "" + LocalDB.Instance.db.data.money;
     }
 
     internal void updateMoney()
-    {
-        moneyText.text = "Money: " + LocalDB.Instance.db.data.money;
+    {//Money:
+        moneyText.text = "" + LocalDB.Instance.db.data.money;
     }
 }
