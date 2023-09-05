@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Project.Scripts.ServiceLocator;
+using System;
 
 public class GameProgress : MonoBehaviour {
 
@@ -12,13 +14,31 @@ public class GameProgress : MonoBehaviour {
     [SerializeField] private Transform Player;
     private float endPos;
     private float progress;
-
+    private ShowInterstitialAd interstitialAd;
     private bool showIcon = false;
+    private string currentSceneName;
 
+    private void Start()
+    {
+        InputManager.Instance.OnGameStart += UpdateData;
 
-    private void Start() => InputManager.Instance.OnGameStart += UpdateData;
+        SL.GetSingle(out interstitialAd);
+        interstitialAd.adMob.OnAddClose += loadCurrentScene;
+        interstitialAd.adMob.OnAddFailed += loadCurrentScene;
+    }
 
-    private void OnDestroy() => InputManager.Instance.OnGameStart -= UpdateData;
+    private void loadCurrentScene()
+    {
+        SceneManager.LoadScene(currentSceneName);
+    }
+
+    private void OnDestroy()
+    {
+        InputManager.Instance.OnGameStart -= UpdateData;
+        interstitialAd.adMob.OnAddClose -= loadCurrentScene;
+        interstitialAd.adMob.OnAddFailed -= loadCurrentScene;
+
+    }
     private void UpdateData() => endPos = LocalDB.Instance.db.data.ropeValue;
     
     
@@ -45,15 +65,15 @@ public class GameProgress : MonoBehaviour {
     private IEnumerator ScoreScene()
     {
         reload.gameObject.SetActive(true);
-        reload.setName("NextLevel");
+        currentSceneName = "NextLevel";
         yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene("NextLevel");
+        interstitialAd.ShowAd();
     }
 
     private IEnumerator ChangeScene() {
         reload.gameObject.SetActive(true);
-        reload.setName("FailScene");
+        currentSceneName = "FailScene";
         yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("FailScene");
+        interstitialAd.ShowAd();
     }
 }
